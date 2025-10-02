@@ -51,9 +51,9 @@
             font-family: 'Teko', sans-serif;
             font-size: 2.8rem;
             text-transform: uppercase;
-            margin: 0 0 2.5rem 0; /* <<< AUMENTEI A MARGEM INFERIOR */
-            letter-spacing: 2px; /* <<< AJUSTE: ADICIONA ESPAÇAMENTO ENTRE LETRAS */
-            line-height: 0.9;    /* <<< AJUSTE PRINCIPAL: REDUZ A ALTURA DA LINHA */
+            margin: 0 0 2.5rem 0;
+            letter-spacing: 2px;
+            line-height: 0.9;
         }
         .input-group {
             margin-bottom: 1.5rem;
@@ -82,7 +82,7 @@
         }
         button {
             width: 100%;
-            padding: 0.8rem 1rem; /* <<< AJUSTE: PADDING VERTICAL */
+            padding: 0.8rem 1rem;
             background-color: var(--primary);
             color: var(--text-primary);
             border: none;
@@ -91,9 +91,9 @@
             font-family: 'Teko', sans-serif;
             font-size: 1.6rem;
             font-weight: 700;
-            letter-spacing: 1px; /* <<< AJUSTE SUTIL */
+            letter-spacing: 1px;
             transition: background-color 0.3s ease;
-            margin-top: 0.5rem; /* <<< AJUSTE: ESPAÇO ACIMA DO BOTÃO */
+            margin-top: 0.5rem;
         }
         button:hover {
             background-color: var(--primary-hover);
@@ -104,9 +104,69 @@
             font-size: 0.9rem;
             height: 1em;
         }
+
+        /* --- INÍCIO: Estilos do Menu de Ajuda --- */
+        .help-menu {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+        }
+        .help-icon {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        .help-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--text-secondary);
+            transition: fill 0.2s;
+        }
+        .help-icon:hover svg {
+            fill: var(--text-primary);
+        }
+        .help-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--surface);
+            border: 1px solid #333;
+            border-radius: 0.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            padding: 0.5rem 0;
+            margin-top: 0.5rem;
+            z-index: 10;
+            width: 180px;
+        }
+        .help-dropdown.hidden {
+            display: none;
+        }
+        .help-dropdown a {
+            display: block;
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+        }
+        .help-dropdown a:hover {
+            background-color: #2a2a2a;
+        }
+        /* --- FIM: Estilos do Menu de Ajuda --- */
+
     </style>
 </head>
 <body>
+    <div class="help-menu">
+        <button id="help-icon-button" class="help-icon" aria-label="Menu de Ajuda">
+            <svg viewBox="0 0 24 24"><path d="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z" /></svg>
+        </button>
+        <div id="help-dropdown" class="help-dropdown hidden">
+            <a href="https://wa.me/556899067380" target="_blank" rel="noopener noreferrer">Ajuda via WhatsApp</a>
+            <a href="https://www.instagram.com/noskill.sensi/" target="_blank" rel="noopener noreferrer">Nosso Instagram</a>
+        </div>
+    </div>
     <div class="login-container">
         <img src="https://i.ibb.co/dwmcHL3T/aOplo9H.png" alt="Logo Noskill Sensi" class="logo">
         <h2>Área de Membros</h2>
@@ -125,6 +185,7 @@
     </div>
 
     <script>
+        // --- Lógica do formulário de login ---
         document.getElementById('login-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('email').value;
@@ -150,6 +211,23 @@
                 errorMessage.textContent = 'Erro de conexão. Tente novamente.';
             }
         });
+
+        // --- INÍCIO: Lógica do Menu de Ajuda ---
+        const helpButton = document.getElementById('help-icon-button');
+        const helpDropdown = document.getElementById('help-dropdown');
+
+        helpButton.addEventListener('click', (event) => {
+            event.stopPropagation(); // Impede que o clique feche o menu imediatamente
+            helpDropdown.classList.toggle('hidden');
+        });
+
+        // Fecha o menu se clicar em qualquer outro lugar da tela
+        window.addEventListener('click', () => {
+            if (!helpDropdown.classList.contains('hidden')) {
+                helpDropdown.classList.add('hidden');
+            }
+        });
+        // --- FIM: Lógica do Menu de Ajuda ---
     </script>
 </body>
 </html>
