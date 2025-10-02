@@ -4,15 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Conteúdo Exclusivo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Teko:wght@700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #121212; color: #e0e0e0; margin: 0; }
-        .header { background-color: #1E1E1E; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333;}
-        .header h1 { margin: 0; font-size: 1.5rem; }
-        #logout-button { background: none; border: 1px solid #E53935; color: #E53935; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        :root { /* ... (mesmas variáveis de cor do index.html) ... */ }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        .header {
+            background-color: #1E1E1E;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        .header h1 {
+            font-family: 'Teko', sans-serif;
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+        #logout-button {
+            background-color: transparent;
+            border: 1px solid #E53935;
+            color: #E53935;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+        #logout-button:hover {
+            background-color: #E53935;
+            color: white;
+        }
         .container { padding: 2rem; max-width: 900px; margin: 0 auto; }
-        h2 { color: #E53935; border-bottom: 1px solid #333; padding-bottom: 0.5rem; }
-        .content-list a { color: #1E88E5; text-decoration: none; display: block; padding: 0.8rem 0; font-size: 1.1rem; border-bottom: 1px solid #282828; }
-        .content-list a:hover { color: #64B5F6; }
+        .module {
+            background-color: #1E1E1E;
+            border: 1px solid #333;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .module h2 {
+            font-family: 'Teko', sans-serif;
+            color: #FFFFFF;
+            font-size: 2rem;
+            text-transform: uppercase;
+            border-bottom: 1px solid #333;
+            padding-bottom: 1rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+        .content-list a {
+            color: #d1d5db;
+            text-decoration: none;
+            display: block;
+            padding: 0.8rem 0.5rem;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #282828;
+            transition: color 0.2s;
+        }
+        .content-list a:last-child { border-bottom: none; }
+        .content-list a:hover { color: #E53935; }
         .content-list a::before { content: '▶ '; color: #E53935; }
         .content-list a.download::before { content: '💾 '; }
     </style>
@@ -20,10 +81,8 @@
 <body>
     <script>
         const token = localStorage.getItem('authToken');
-        // Se não houver "crachá", o usuário não está logado.
-        // Chutamos ele de volta para a página de login.
         if (!token) {
-            window.location.href = 'login.html';
+            window.location.href = 'index.html'; // CORRIGIDO
         }
     </script>
 
@@ -33,9 +92,6 @@
     </header>
 
     <main class="container">
-        <h1>Conteúdo Exclusivo</h1>
-        <p>Acesse abaixo todo o material que preparamos para você.</p>
-
         <section class="module">
             <h2>Módulo 1: Configuração Inicial</h2>
             <div class="content-list">
@@ -43,7 +99,6 @@
                 <a href="#" class="download">Guia de Aquecimento (PDF)</a>
             </div>
         </section>
-
         <section class="module">
             <h2>Módulo 2: Técnicas Avançadas</h2>
             <div class="content-list">
@@ -55,12 +110,9 @@
 
     <script>
         document.getElementById('logout-button').addEventListener('click', () => {
-            // Remove o "crachá" do navegador
             localStorage.removeItem('authToken');
-            // Envia o usuário de volta para o login
-            window.location.href = 'login.html';
+            window.location.href = 'index.html'; // CORRIGIDO
         });
     </script>
-
 </body>
 </html>
