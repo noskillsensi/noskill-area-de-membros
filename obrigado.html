@@ -11,7 +11,7 @@
         :root {
             --background: #121212;
             --surface: #1E1E1E;
-            --primary: #E53935;
+            --surface-light: #2a2a2a;
             --success: #22c55e;
             --whatsapp: #25D366;
             --whatsapp-hover: #128C7E;
@@ -24,7 +24,8 @@
             color: var(--text-primary);
             text-align: center;
             margin: 0;
-            padding: 2rem 1rem;
+            padding: 3rem 1rem; /* <<< AJUSTE: Adiciona espaçamento no topo e na base */
+            box-sizing: border-box;
             padding-top: env(safe-area-inset-top);
             padding-bottom: env(safe-area-inset-bottom);
         }
@@ -34,7 +35,7 @@
             padding: 0 1rem;
         }
         .logo {
-            width: 80px; /* <<< AJUSTE: Logo um pouco menor para mais elegância */
+            width: 80px;
             height: auto;
             margin: 0 auto 2rem auto;
         }
@@ -49,7 +50,7 @@
             width: 80px;
             height: 80px;
             color: var(--success);
-            margin: 0 auto 0.5rem auto; /* <<< AJUSTE: Margem inferior reduzida */
+            margin: 0 auto 0.5rem auto;
         }
         h1 {
             font-family: 'Teko', sans-serif;
@@ -58,7 +59,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             line-height: 1.1;
-            margin: 0.5rem 0; /* <<< AJUSTE: Adiciona respiro vertical para centralizar melhor */
+            margin: 0.5rem 0;
         }
         p {
             line-height: 1.6;
@@ -66,24 +67,42 @@
             color: var(--text-secondary);
             margin-top: 0.5rem;
         }
-        .instructions {
-            text-align: left;
-        }
         .instructions h2 {
             font-family: 'Teko', sans-serif;
             text-transform: uppercase;
             font-size: 1.5rem;
             margin-top: 0;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem; /* Mais espaço */
             text-align: center;
         }
-        .instructions p {
-            font-size: 0.95rem;
-            margin-top: 1rem;
+        /* --- INÍCIO: Novas classes para destacar os e-mails --- */
+        .email-step {
+            background-color: var(--surface-light);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: left;
+            margin-bottom: 1rem;
+            border-left: 3px solid var(--success);
         }
-        .instructions strong {
+        .email-step:last-child {
+            margin-bottom: 0;
+            border-left-color: var(--text-secondary);
+        }
+        .email-step strong {
+            display: block;
+            font-size: 1.1rem;
             color: var(--text-primary);
+            margin-bottom: 0.25rem;
         }
+        .email-step span {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .email-step .spam-warning {
+            color: #ffa726; /* Laranja de alerta */
+            font-weight: bold;
+        }
+        /* --- FIM: Novas classes --- */
         .button {
             display: flex;
             align-items: center;
@@ -123,7 +142,7 @@
 
         <div class="card">
             <div class="success-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 T 24 24" stroke-width="2" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
             </div>
@@ -133,10 +152,15 @@
 
         <div class="card instructions">
             <h2>Instruções Importantes</h2>
-            <p>Enviamos seus dados de acesso para o seu e-mail. Por favor, verifique sua caixa de entrada nos próximos minutos.</p>
-            <p>• **E-mail 1 (Acesso Principal):** Virá de <strong>noskillltda@gmail.com</strong> com sua senha para nossa área de membros. <strong>Lembre-se de verificar sua caixa de SPAM!</strong></p>
-            <p>• **E-mail 2 (Recibo):** Você também receberá um e-mail da <strong>ggCheckout</strong> com os detalhes da compra.</p>
-        </div>
+            <div class="email-step">
+                <strong>E-mail 1: Acesso Principal</strong>
+                <span>Virá de <strong>noskillltda@gmail.com</strong> com sua senha de acesso. <span class="spam-warning">Verifique sua caixa de SPAM!</span></span>
+            </div>
+            <div class="email-step">
+                <strong>E-mail 2: Recibo da Compra</strong>
+                <span>Você também receberá um e-mail oficial da <strong>ggCheckout</strong> com os detalhes do seu pagamento.</span>
+            </div>
+            </div>
         
         <a href="https://chat.whatsapp.com/BPMDWGysTQFHpB7lKuchJY?mode=ems_copy_t" class="button" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" fill="currentColor">
