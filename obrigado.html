@@ -18,158 +18,136 @@
             --text-primary: #FFFFFF;
             --text-secondary: #9ca3af;
         }
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--background);
             color: var(--text-primary);
             text-align: center;
-            margin: 0;
-            padding: 4rem 1rem 2rem 1rem; /* <<< AJUSTE: Mais espaçamento no topo */
             box-sizing: border-box;
-            padding-top: env(safe-area-inset-top);
-            padding-bottom: env(safe-area-inset-bottom);
-        }
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-        .logo {
-            width: 120px; /* <<< AJUSTE: Logo maior */
-            height: auto;
-            margin: 0 auto 2.5rem auto; /* Mais espaço abaixo */
-        }
-        .card {
-            background-color: var(--surface);
-            border: 1px solid #333;
-            border-radius: 0.75rem;
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-        }
-        .success-icon svg {
-            width: 100px; /* <<< AJUSTE: Ícone maior */
-            height: 100px; /* <<< AJUSTE: Ícone maior */
-            color: var(--success);
-            margin: 0 auto 1.5rem auto; /* <<< AJUSTE: Mais espaço abaixo do ícone */
-        }
-        h1 {
-            font-family: 'Teko', sans-serif;
-            color: var(--text-primary);
-            font-size: 3rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            line-height: 1.1;
-            margin: 0.5rem 0;
-        }
-        p {
-            line-height: 1.6;
-            font-size: 1rem;
-            color: var(--text-secondary);
-            margin-top: 0.5rem;
-        }
-        .instructions h2 {
-            font-family: 'Teko', sans-serif;
-            text-transform: uppercase;
-            font-size: 1.5rem;
-            margin-top: 0;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-        .email-step {
-            background-color: var(--surface-light);
-            padding: 1rem;
-            border-radius: 0.5rem;
-            text-align: left;
-            margin-bottom: 1rem;
-            border-left: 3px solid var(--success);
-        }
-        .email-step:last-child {
-            margin-bottom: 0;
-            border-left-color: var(--text-secondary);
-        }
-        .email-step strong {
-            display: block;
-            font-size: 1.1rem;
-            color: var(--text-primary);
-            margin-bottom: 0.25rem;
-        }
-        .email-step span {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-        .email-step .spam-warning {
-            color: #ffa726;
-            font-weight: bold;
-        }
-        .button {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.75rem;
-            background-color: var(--whatsapp);
-            color: white;
-            padding: 0.75rem 2rem;
-            text-decoration: none;
-            border-radius: 0.5rem;
-            margin-top: 2rem;
-            font-family: 'Teko', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            transition: background-color 0.3s ease;
+        }
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            background-color: var(--background);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        #preloader.fade-out { opacity: 0; }
+        .preloader-logo { width: 120px; animation: breathing 2s infinite ease-in-out; }
+        .preloader-text { font-family: 'Teko', sans-serif; font-size: 1.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-secondary); margin-top: 1.5rem; }
+        .preloader-text::after { content: '.'; animation: dots 1.5s steps(3, end) infinite; display: inline-block; width: 20px; text-align: left; }
+        @keyframes breathing { 0%, 100% { transform: scale(0.98); opacity: 0.9; } 50% { transform: scale(1.02); opacity: 1; } }
+        @keyframes dots { 0%, 20% { content: '.'; } 40% { content: '..'; } 60% { content: '...'; } 80%, 100% { content: ''; } }
+        
+        #main-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            width: 100%;
+            padding: 2rem 1rem;
             box-sizing: border-box;
         }
-        .button:hover {
-            background-color: var(--whatsapp-hover);
-        }
-        .button svg {
-            width: 24px;
-            height: 24px;
-        }
-        .footer {
-            margin-top: 3rem;
-            font-size: 0.75rem;
-            color: #666;
-        }
+        #main-content.fade-in { opacity: 1; }
+        .container { max-width: 500px; margin: 0 auto; }
+        .logo { width: 80px; height: auto; margin: 0 auto 2rem auto; }
+        .card { background-color: var(--surface); border: 1px solid #333; border-radius: 0.75rem; padding: 2rem; margin-bottom: 1.5rem; }
+        .success-icon svg { width: 100px; height: 100px; color: var(--success); margin: 0 auto 1.5rem auto; }
+        h1 { font-family: 'Teko', sans-serif; color: var(--text-primary); font-size: 3rem; text-transform: uppercase; letter-spacing: 1px; line-height: 1.1; margin: 0.5rem 0; }
+        p { line-height: 1.6; font-size: 1rem; color: var(--text-secondary); margin-top: 0.5rem; }
+        .instructions h2 { font-family: 'Teko', sans-serif; text-transform: uppercase; font-size: 1.5rem; margin-top: 0; margin-bottom: 1.5rem; text-align: center; }
+        
+        /* --- ESTILOS MELHORADOS PARA OS DETALHES DOS E-MAILS --- */
+        .email-step { background-color: var(--surface-light); padding: 1.25rem; border-radius: 0.5rem; text-align: left; margin-bottom: 1rem; border-left: 3px solid var(--success); }
+        .email-step:last-child { margin-bottom: 0; border-left-color: var(--text-secondary); }
+        .email-step-title { display: block; font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; }
+        .email-step-description { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.5; }
+        .email-step-description strong { color: #fafafa; }
+        .spam-warning { color: #ffa726; font-weight: bold; }
+        /* --- FIM DOS ESTILOS MELHORADOS --- */
+
+        .button { display: flex; align-items: center; justify-content: center; gap: 0.75rem; background-color: var(--whatsapp); color: white; padding: 0.75rem 2rem; text-decoration: none; border-radius: 0.5rem; margin-top: 2rem; font-family: 'Teko', sans-serif; font-size: 1.6rem; font-weight: 700; letter-spacing: 0.05em; transition: background-color 0.3s ease; width: 100%; box-sizing: border-box; }
+        .button:hover { background-color: var(--whatsapp-hover); }
+        .button svg { width: 24px; height: 24px; }
+        .footer { margin-top: 3rem; font-size: 0.75rem; color: #666; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="https://i.ibb.co/dwmcHL3T/aOplo9H.png" alt="Logo Noskill Sensi" class="logo">
-
-        <div class="card">
-            <div class="success-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-            </div>
-            <h1>Compra Aprovada!</h1>
-            <p>Parabéns por se juntar à elite. Estamos felizes em ter você conosco.</p>
-        </div>
-
-        <div class="card instructions">
-            <h2>Instruções Importantes</h2>
-            <div class="email-step">
-                <strong>E-mail 1: Acesso Principal</strong>
-                <span>Virá de <strong>noskillltda@gmail.com</strong> com sua senha de acesso. <span class="spam-warning">Verifique sua caixa de SPAM!</span></span>
-            </div>
-            <div class="email-step">
-                <strong>E-mail 2: Recibo da Compra</strong>
-                <span>Você também receberá um e-mail oficial da <strong>ggCheckout</strong> com os detalhes do seu pagamento.</span>
-            </div>
-        </div>
-        
-        <a href="https://chat.whatsapp.com/BPMDWGysTQFHpB7lKuchJY?mode=ems_copy_t" class="button" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 12C2.13 14.03 2.76 15.93 3.86 17.5L2.5 21.5L6.69 20.18C8.26 21.21 10.1 21.88 12.04 21.88C17.5 21.88 21.95 17.43 21.95 12C21.95 6.55 17.5 2 12.04 2M12.04 3.63C16.56 3.63 20.32 7.39 20.32 12C20.32 16.61 16.56 20.37 12.04 20.37C10.21 20.37 8.5 19.78 7.11 18.79L6.91 18.66L4.35 19.53L5.25 17L5.11 16.78C4.05 15.3 3.46 13.53 3.46 12C3.46 7.39 7.22 3.63 12.04 3.63M9.13 7.59C9.31 7.59 9.48 7.63 9.63 7.95L9.99 8.54C10.11 8.71 10.23 8.87 10.33 9.04C10.45 9.23 10.5 9.3 10.46 9.46C10.41 9.62 10.27 9.78 10.11 9.99C9.95 10.2 9.8 10.38 9.67 10.51C9.54 10.64 9.4 10.8 9.53 11.04C9.66 11.28 10.14 12.05 10.9 12.78C11.83 13.67 12.56 14.03 12.92 14.19C13.16 14.28 13.38 14.26 13.54 14.1C13.71 13.93 14.04 13.46 14.28 13.12C14.52 12.78 14.76 12.72 15 12.82C15.24 12.92 16.42 13.5 16.66 13.61C16.9 13.72 17.06 13.79 17.12 13.9C17.18 14.01 17.18 14.54 16.94 15.02C16.7 15.5 15.93 15.93 15.49 16.09C15.05 16.25 14.55 16.31 14.15 16.15C13.75 16 13.06 15.78 12.21 15.03C11.16 14.07 10.39 12.9 10.21 12.63C10.03 12.36 9.42 11.53 9.42 11.53C9.28 11.33 9.04 11.07 8.85 10.81C8.66 10.55 8.52 10.36 8.38 10.16C8.27 10 8.08 9.73 7.9 9.58C7.72 9.43 7.57 9.33 7.4 9.33C7.23 9.33 7.03 9.17 6.81 8.91C6.59 8.65 6.31 8.31 6.31 8.05C6.31 7.79 6.47 7.63 6.63 7.59C6.79 7.55 6.96 7.55 7.11 7.55H7.31C7.47 7.55 7.65 7.59 7.82 7.83C7.99 8.07 8.13 8.31 8.21 8.43C8.29 8.55 8.38 8.68 8.46 8.76C8.54 8.84 8.58 8.88 8.62 8.84C8.67 8.8 8.71 8.68 8.75 8.58C8.79 8.48 8.81 8.36 8.83 8.26C8.85 8.16 8.85 8.06 8.83 7.97C8.81 7.87 8.75 7.75 8.67 7.65C8.59 7.55 8.44 7.41 8.29 7.31C8.14 7.21 8.03 7.13 8.03 7.04C8.03 6.95 8.11 6.85 8.23 6.75C8.35 6.65 8.48 6.57 8.62 6.53C8.76 6.49 8.94 6.49 9.13 6.49H9.27L9.13 7.59Z" />
-            </svg>
-            <span>Entrar no Grupo VIP</span>
-        </a>
-
-        <footer class="footer">
-            <p>&copy; 2025 Noskill Sensi. Todos os direitos reservados.</p>
-        </footer>
+    <div id="preloader">
+        <img src="https://i.ibb.co/dwmcHL3T/aOplo9H.png" alt="Logótipo Noskill Sensi" class="preloader-logo">
+        <p class="preloader-text">Processando Pagamento</p>
     </div>
+
+    <div id="main-content">
+        <div class="container">
+            <img src="https://i.ibb.co/dwmcHL3T/aOplo9H.png" alt="Logótipo Noskill Sensi" class="logo">
+            <div class="card">
+                <div class="success-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <h1>Compra Aprovada!</h1>
+                <p>Parabéns por se juntar à elite. Estamos felizes em tê-lo connosco.</p>
+            </div>
+            <div class="card instructions">
+                <h2>Instruções Importantes</h2>
+                
+                <!-- INÍCIO: TEXTOS DETALHADOS REINSERIDOS -->
+                <div class="email-step">
+                    <span class="email-step-title">E-mail 1: O Seu Acesso Principal</span>
+                    <p class="email-step-description">
+                        Este é o e-mail mais importante, enviado por <strong>noskillltda@gmail.com</strong>. Ele contém a sua <strong>palavra-passe secreta</strong> para entrar no nosso Painel/Área de Membros.
+                        <br><span class="spam-warning">Lembre-se de verificar a sua caixa de SPAM!</span>
+                    </p>
+                </div>
+                <div class="email-step">
+                    <span class="email-step-title">E-mail 2: O Seu Recibo</span>
+                    <p class="email-step-description">
+                        Receberá também um e-mail automático da <strong>ggCheckout</strong>. Ele serve como o seu <strong>recibo oficial de pagamento</strong> e também pode conter links para bónus ou para a área de membros deles.
+                    </p>
+                </div>
+                <!-- FIM: TEXTOS DETALHADOS REINSERIDOS -->
+            </div>
+            <a href="https://chat.whatsapp.com/BPMDWGysTQFHpB7lKuchJY?mode=ems_copy_t" class="button" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 12C2.13 14.03 2.76 15.93 3.86 17.5L2.5 21.5L6.69 20.18C8.26 21.21 10.1 21.88 12.04 21.88C17.5 21.88 21.95 17.43 21.95 12C21.95 6.55 17.5 2 12.04 2M12.04 3.63C16.56 3.63 20.32 7.39 20.32 12C20.32 16.61 16.56 20.37 12.04 20.37C10.21 20.37 8.5 19.78 7.11 18.79L6.91 18.66L4.35 19.53L5.25 17L5.11 16.78C4.05 15.3 3.46 13.53 3.46 12C3.46 7.39 7.22 3.63 12.04 3.63M9.13 7.59C9.31 7.59 9.48 7.63 9.63 7.95L9.99 8.54C10.11 8.71 10.23 8.87 10.33 9.04C10.45 9.23 10.5 9.3 10.46 9.46C10.41 9.62 10.27 9.78 10.11 9.99C9.95 10.2 9.8 10.38 9.67 10.51C9.54 10.64 9.4 10.8 9.53 11.04C9.66 11.28 10.14 12.05 10.9 12.78C11.83 13.67 12.56 14.03 12.92 14.19C13.16 14.28 13.38 14.26 13.54 14.1C13.71 13.93 14.04 13.46 14.28 13.12C14.52 12.78 14.76 12.72 15 12.82C15.24 12.92 16.42 13.5 16.66 13.61C16.9 13.72 17.06 13.79 17.12 13.9C17.18 14.01 17.18 14.54 16.94 15.02C16.7 15.5 15.93 15.93 15.49 16.09C15.05 16.25 14.55 16.31 14.15 16.15C13.75 16 13.06 15.78 12.21 15.03C11.16 14.07 10.39 12.9 10.21 12.63C10.03 12.36 9.42 11.53 9.42 11.53C9.28 11.33 9.04 11.07 8.85 10.81C8.66 10.55 8.52 10.36 8.38 10.16C8.27 10 8.08 9.73 7.9 9.58C7.72 9.43 7.57 9.33 7.4 9.33C7.23 9.33 7.03 9.17 6.81 8.91C6.59 8.65 6.31 8.31 6.31 8.05C6.31 7.79 6.47 7.63 6.63 7.59C6.79 7.55 6.96 7.55 7.11 7.55H7.31C7.47 7.55 7.65 7.59 7.82 7.83C7.99 8.07 8.13 8.31 8.21 8.43C8.29 8.55 8.38 8.68 8.46 8.76C8.54 8.84 8.58 8.88 8.62 8.84C8.67 8.8 8.71 8.68 8.75 8.58C8.79 8.48 8.81 8.36 8.83 8.26C8.85 8.16 8.85 8.06 8.83 7.97C8.81 7.87 8.75 7.75 8.67 7.65C8.59 7.55 8.44 7.41 8.29 7.31C8.14 7.21 8.03 7.13 8.03 7.04C8.03 6.95 8.11 6.85 8.23 6.75C8.35 6.65 8.48 6.57 8.62 6.53C8.76 6.49 8.94 6.49 9.13 6.49H9.27L9.13 7.59Z" />
+                </svg>
+                <span>Entrar no Grupo VIP</span>
+            </a>
+            <footer class="footer">
+                <p>&copy; 2025 Noskill Sensi. Todos os direitos reservados.</p>
+            </footer>
+        </div>
+    </div>
+    <script>
+        window.onload = function() {
+            setTimeout(function() {
+                const preloader = document.getElementById('preloader');
+                const mainContent = document.getElementById('main-content');
+                preloader.classList.add('fade-out');
+                preloader.addEventListener('transitionend', function() {
+                    preloader.style.display = 'none';
+                    mainContent.style.display = 'block';
+                    setTimeout(() => mainContent.classList.add('fade-in'), 50);
+                });
+            }, 3000);
+        };
+    </script>
 </body>
 </html>
+
