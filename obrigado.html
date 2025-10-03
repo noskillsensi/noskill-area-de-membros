@@ -18,22 +18,20 @@
             --text-primary: #FFFFFF;
             --text-secondary: #9ca3af;
         }
-        html, body {
-            height: 100%;
-            margin: 0;
+        html {
+            scroll-behavior: smooth;
         }
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--background);
             color: var(--text-primary);
             text-align: center;
+            margin: 0;
+            padding: 0; 
             box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
-        /* --- INÍCIO: Animação de Pré-carregamento Simplificada --- */
+        /* --- Animação de Pré-carregamento --- */
         #preloader {
             position: fixed;
             top: 0;
@@ -42,6 +40,7 @@
             height: 100%;
             background-color: var(--background);
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 1000;
@@ -51,21 +50,16 @@
         }
         #preloader.fade-out {
             opacity: 0;
-            visibility: hidden; /* Garante que o preloader não bloqueie cliques */
+            visibility: hidden;
         }
         .preloader-logo {
             width: 150px;
             animation: breathing 2.5s infinite ease-in-out;
         }
-        @keyframes preloaderFadeIn {
-            to { opacity: 1; }
-        }
-        @keyframes breathing {
-            0%, 100% { transform: scale(0.97); opacity: 0.8; }
-            50% { transform: scale(1.03); opacity: 1; }
-        }
-        /* --- FIM: Animação de Pré-carregamento --- */
+        @keyframes preloaderFadeIn { to { opacity: 1; } }
+        @keyframes breathing { 0%, 100% { transform: scale(0.97); opacity: 0.8; } 50% { transform: scale(1.03); opacity: 1; } }
         
+        /* --- Conteúdo Principal --- */
         #main-content {
             display: none;
             opacity: 0;
@@ -142,27 +136,24 @@
     </div>
 
     <script>
-        // SCRIPT CORRIGIDO E ROBUSTO
         window.addEventListener('load', function() {
             const preloader = document.getElementById('preloader');
             const mainContent = document.getElementById('main-content');
             
-            // Define um tempo para a animação
             setTimeout(function() {
                 preloader.classList.add('fade-out');
                 
-                // Ouve o evento de fim da transição para garantir que a animação terminou
                 preloader.addEventListener('transitionend', function() {
                     mainContent.style.display = 'block';
-                    // Pequeno delay para garantir que o display 'block' foi aplicado antes de iniciar o fade in
                     setTimeout(() => {
                         mainContent.classList.add('fade-in');
                     }, 20);
-                }, { once: true }); // Garante que o evento só seja disparado uma vez
+                }, { once: true });
 
-            }, 3000); // 3000 milissegundos = 3 segundos
+            }, 3000); 
         });
     </script>
 </body>
 </html>
+
 
