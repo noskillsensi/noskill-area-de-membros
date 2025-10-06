@@ -41,6 +41,8 @@
             max-width: 400px;
             border: 1px solid #333;
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 5;
         }
         .logo {
             width: 80px;
@@ -110,6 +112,7 @@
             position: absolute;
             top: 1.5rem;
             left: 1.5rem;
+            z-index: 10;
         }
         .help-icon {
             background: none;
@@ -155,6 +158,44 @@
         }
         /* --- FIM: Estilos do Menu de Ajuda --- */
 
+        /* --- INÍCIO: Estilos do Link de Suporte e Rodapé --- */
+        .support-link {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+        .support-link a {
+            color: var(--text-primary);
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .support-link a:hover {
+            text-decoration: underline;
+        }
+        .legal-footer {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            z-index: 1;
+        }
+        .legal-footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        .legal-footer a:hover {
+            color: var(--text-primary);
+            text-decoration: underline;
+        }
+        .legal-footer p {
+            margin-top: 0.5rem;
+        }
+        /* --- FIM: Estilos do Link de Suporte e Rodapé --- */
+
     </style>
 </head>
 <body>
@@ -180,10 +221,17 @@
                 <input type="password" id="password" required>
             </div>
             <button type="submit">Entrar</button>
-        </form>
+            <p class="support-link">
+                Problemas com o acesso? <a href="https://wa.me/556899067380" target="_blank">Fale com o suporte</a>.
+            </p>
+            </form>
         <p id="error-message" class="error"></p>
     </div>
 
+    <footer class="legal-footer">
+        <a href="/termos-de-uso.html" target="_blank">Termos de Uso</a> | <a href="/politica-de-privacidade.html" target="_blank">Política de Privacidade</a>
+        <p>&copy; 2025 Noskill Sensi. Todos os direitos reservados.</p>
+    </footer>
     <script>
         // --- Lógica do formulário de login ---
         document.getElementById('login-form').addEventListener('submit', async (e) => {
@@ -212,7 +260,7 @@
             }
         });
 
-        // --- INÍCIO: Lógica do Menu de Ajuda ---
+        // --- Lógica do Menu de Ajuda ---
         const helpButton = document.getElementById('help-icon-button');
         const helpDropdown = document.getElementById('help-dropdown');
 
@@ -227,7 +275,6 @@
                 helpDropdown.classList.add('hidden');
             }
         });
-        // --- FIM: Lógica do Menu de Ajuda ---
     </script>
 </body>
 </html>
