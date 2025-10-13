@@ -8,48 +8,163 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Teko:wght@700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --background: #121212;
-            --surface: #1E1E1E;
-            --surface-light: #2a2a2a;
-            --success: #22c55e;
-            --warning: #facc15; /* Amarelo para destaque */
-            --whatsapp: #25D366;
-            --whatsapp-hover: #128C7E;
-            --text-primary: #FFFFFF;
-            --text-secondary: #9ca3af;
+        /* --- Configurações Globais --- */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            font-family: 'Poppins', sans-serif;
+            color: #FFFFFF;
+            text-align: center;
         }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--background); color: var(--text-primary); text-align: center; margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* --- Pré-carregamento (RESTAURADO) --- */
-        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: var(--background); display: flex; justify-content: center; align-items: center; z-index: 1000; transition: opacity 0.7s ease, visibility 0.7s; }
-        #preloader.fade-out { opacity: 0; visibility: hidden; }
-        .preloader-logo { width: 150px; animation: breathing 2.5s infinite ease-in-out; }
-        @keyframes breathing { 0%, 100% { transform: scale(0.97); opacity: 0.8; } 50% { transform: scale(1.03); opacity: 1; } }
+        /* --- Pré-carregamento --- */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #121212;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.7s ease, visibility 0.7s ease;
+        }
+        #preloader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .preloader-logo {
+            width: 150px;
+            animation: breathing 2.5s infinite ease-in-out;
+        }
+        @keyframes breathing {
+            0%, 100% { transform: scale(0.97); opacity: 0.8; }
+            50% { transform: scale(1.03); opacity: 1; }
+        }
 
         /* --- Conteúdo Principal --- */
-        #main-content { display: none; opacity: 0; transition: opacity 0.5s ease; flex-direction: column; justify-content: flex-start; align-items: center; min-height: 100vh; padding: 2rem 1rem; box-sizing: border-box; }
-        #main-content.fade-in { display: flex; opacity: 1; }
+        #main-content {
+            display: none; /* Inicia oculto */
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            padding: 2rem 1rem; /* Espaçamento das bordas da tela */
+            box-sizing: border-box;
+        }
+        #main-content.fade-in {
+            display: block; /* Revela o conteúdo */
+            opacity: 1;
+        }
 
-        .container { max-width: 500px; width: 100%; margin: 0 auto; }
-        .card { background-color: var(--surface); border: 1px solid #333; border-radius: 0.75rem; padding: 2rem; margin-bottom: 1.5rem; }
-        .success-icon svg { width: 100px; height: 100px; color: var(--success); margin: 0 auto 1.5rem auto; }
-        h1 { font-family: 'Teko', sans-serif; color: var(--text-primary); font-size: 3rem; text-transform: uppercase; letter-spacing: 1px; line-height: 1.1; margin: 0.5rem 0; }
-        p { line-height: 1.6; font-size: 1rem; color: var(--text-secondary); margin-top: 0.5rem; }
-        .instructions h2 { font-family: 'Teko', sans-serif; text-transform: uppercase; font-size: 1.5rem; margin-top: 0; margin-bottom: 1.5rem; text-align: center; }
-        .email-step { background-color: var(--surface-light); padding: 1.25rem; border-radius: 0.5rem; text-align: left; margin-bottom: 1rem; border-left: 3px solid var(--success); }
-        .spam-warning { color: #ffa726; font-weight: bold; }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: #1E1E1E;
+            border: 1px solid #333;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Ícone SVG Corrigido */
+        .success-icon {
+            width: 80px; /* Tamanho fixo para o container */
+            height: 80px;
+            margin: 0 auto 1rem auto;
+        }
+        .success-icon svg {
+            width: 100%;
+            height: 100%;
+            color: #22c55e;
+        }
+
+        h1 {
+            font-family: 'Teko', sans-serif;
+            font-size: 2.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.1;
+            margin: 0.5rem 0;
+            color: #FFFFFF;
+        }
+
+        h2 {
+            font-family: 'Teko', sans-serif;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin: 0 0 1rem 0;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 1rem;
+            color: #9ca3af;
+            margin: 0.5rem 0 0 0;
+        }
+
+        .email-step {
+            background-color: #2a2a2a;
+            padding: 1.25rem;
+            border-radius: 0.5rem;
+            text-align: left;
+            border-left: 3px solid #22c55e;
+        }
+        .spam-warning {
+            color: #ffa726;
+            font-weight: bold;
+        }
         
-        .support-card { border: 1px solid var(--warning); }
-        .support-card h2 { color: var(--warning); }
-        .support-card strong { color: var(--text-primary); }
+        .support-card {
+            border: 1px solid #facc15;
+        }
+        .support-card h2 {
+            color: #facc15;
+        }
+        .support-card strong {
+            color: #FFFFFF;
+        }
 
-        .button { display: flex; align-items: center; justify-content: center; gap: 0.75rem; background-color: var(--whatsapp); color: white; padding: 0.75rem 2rem; text-decoration: none; border-radius: 0.5rem; margin-top: 1rem; font-family: 'Teko', sans-serif; font-size: 1.6rem; font-weight: 700; letter-spacing: 0.05em; transition: background-color 0.3s ease; width: 100%; box-sizing: border-box; }
-        .button:hover { background-color: var(--whatsapp-hover); }
-        .button svg { width: 24px; height: 24px; }
-        .footer { margin-top: 3rem; font-size: 0.75rem; color: #666; }
-        .footer-logo { width: 80px; height: auto; margin: 0 auto 1rem auto; opacity: 0.5; }
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            background-color: #25D366;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            margin-top: 1.5rem;
+            font-family: 'Teko', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #128C7E;
+        }
+        .button svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            color: #666;
+        }
+        .footer-logo {
+            width: 80px;
+            height: auto;
+            margin: 0 auto 1rem auto;
+            opacity: 0.5;
+        }
     </style>
 </head>
 <body>
@@ -61,42 +176,31 @@
         <div class="container">
             <div class="card">
                 <div class="success-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 </div>
                 <h1>Compra Aprovada!</h1>
                 <p>Parabéns por se juntar à elite. Seu acesso foi enviado.</p>
             </div>
 
             <div class="card support-card">
-                <h2 style="font-size: 1.5rem;">ATENÇÃO: ALGUM PROBLEMA COM A COMPRA?</h2>
-                <p>
-                    Se o seu acesso não chegar em <strong>5 minutos</strong>, ou se houver <strong>qualquer outra dúvida</strong>, não se preocupe.
-                </p>
-                <p style="font-size: 1.1rem; color: var(--text-primary);">
-                    <strong>A forma mais rápida e garantida de resolver é falando diretamente conosco.</strong>
-                </p>
-                <p>
-                    Nossa equipe de suporte está online para te ajudar com <strong>prioridade total</strong>. Toque no botão abaixo.
-                </p>
+                <h2>ATENÇÃO: ALGUM PROBLEMA COM A COMPRA?</h2>
+                <p>Se o seu acesso não chegar em <strong>5 minutos</strong>, ou se houver <strong>qualquer outra dúvida</strong>, não se preocupe.</p>
+                <p style="font-size: 1.1rem; color: #FFFFFF;"><strong>A forma mais rápida e garantida de resolver é falando diretamente conosco.</strong></p>
+                <p>Nossa equipe de suporte está online para te ajudar com <strong>prioridade total</strong>. Toque no botão abaixo.</p>
                 <a href="https://wa.me/5568999067380?text=Olá!%20Acabei%20de%20comprar%20e%20preciso%20de%20ajuda." class="button" target="_blank" rel="noopener noreferrer">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 12C2.13 14.03 2.76 15.93 3.86 17.5L2.5 21.5L6.69 20.18C8.26 21.21 10.1 21.88 12.04 21.88C17.5 21.88 21.95 17.43 21.95 12C21.95 6.55 17.5 2 12.04 2Z"/></svg>
                     <span>FALAR COM O SUPORTE</span>
                 </a>
             </div>
 
-            <div class="card instructions">
+            <div class="card">
                 <h2>Instruções de Acesso</h2>
                 <div class="email-step">
-                    <p class="email-step-description">
-                        Enviamos os dados de acesso para o e-mail que você informou no checkout.
-                        <br><strong id="customer-email" style="color: #fafafa; word-break: break-all;"></strong>
-                        <br><br>
-                        <span class="spam-warning">Lembre-se de verificar sua caixa de SPAM e PROMOÇÕES!</span>
-                    </p>
+                    <p style="margin:0;">Enviamos os dados de acesso para o e-mail que você informou no checkout.<br><strong id="customer-email" style="color: #FFFFFF; word-break: break-all;"></strong><br><br><span class="spam-warning">Lembre-se de verificar sua caixa de SPAM e PROMOÇÕES!</span></p>
                 </div>
             </div>
             
-            <p style="font-size: 0.9rem;">Após conseguir acessar, <a href="https://chat.whatsapp.com/BPMDWGysTQFHpB7lKuchJY?mode=ems_copy_t" target="_blank" rel="noopener noreferrer" style="color: var(--text-primary); font-weight: bold;">clique aqui para entrar no Grupo VIP</a>.</p>
+            <p style="font-size: 0.9rem;">Após conseguir acessar, <a href="https://chat.whatsapp.com/BPMDWGysTQFHpB7lKuchJY?mode=ems_copy_t" target="_blank" rel="noopener noreferrer" style="color: #FFFFFF; font-weight: bold;">clique aqui para entrar no Grupo VIP</a>.</p>
             
             <footer class="footer">
                 <img src="https://i.ibb.co/dwmcHL3T/aOplo9H.png" alt="Logótipo Noskill Sensi" class="footer-logo">
@@ -106,12 +210,11 @@
     </div>
 
     <script>
-        // SCRIPT DO PRELOADER (RESTAURADO)
         window.addEventListener('load', function() {
             const preloader = document.getElementById('preloader');
             const mainContent = document.getElementById('main-content');
             
-            setTimeout(function() { // Simula um tempo de carregamento
+            setTimeout(function() {
                 if (preloader) {
                     preloader.classList.add('fade-out');
                     preloader.addEventListener('transitionend', function() {
@@ -119,11 +222,12 @@
                             mainContent.classList.add('fade-in');
                         }
                     }, { once: true });
+                } else if (mainContent) {
+                    mainContent.classList.add('fade-in');
                 }
-            }, 1500); // Duração do preloader em milissegundos
+            }, 1500);
         });
 
-        // SCRIPT PARA EXIBIR O EMAIL DO CLIENTE
         document.addEventListener('DOMContentLoaded', function() {
             const emailDisplay = document.getElementById('customer-email');
             if (emailDisplay) {
