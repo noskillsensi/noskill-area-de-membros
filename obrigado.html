@@ -21,7 +21,17 @@
         }
         html { scroll-behavior: smooth; }
         body { font-family: 'Poppins', sans-serif; background-color: var(--background); color: var(--text-primary); text-align: center; margin: 0; padding: 0; box-sizing: border-box; }
-        #main-content { display: flex; flex-direction: column; justify-content: flex-start; align-items: center; min-height: 100vh; padding: 2rem 1rem; box-sizing: border-box; }
+
+        /* --- Pré-carregamento (RESTAURADO) --- */
+        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: var(--background); display: flex; justify-content: center; align-items: center; z-index: 1000; transition: opacity 0.7s ease, visibility 0.7s; }
+        #preloader.fade-out { opacity: 0; visibility: hidden; }
+        .preloader-logo { width: 150px; animation: breathing 2.5s infinite ease-in-out; }
+        @keyframes breathing { 0%, 100% { transform: scale(0.97); opacity: 0.8; } 50% { transform: scale(1.03); opacity: 1; } }
+
+        /* --- Conteúdo Principal --- */
+        #main-content { display: none; opacity: 0; transition: opacity 0.5s ease; flex-direction: column; justify-content: flex-start; align-items: center; min-height: 100vh; padding: 2rem 1rem; box-sizing: border-box; }
+        #main-content.fade-in { display: flex; opacity: 1; }
+
         .container { max-width: 500px; width: 100%; margin: 0 auto; }
         .card { background-color: var(--surface); border: 1px solid #333; border-radius: 0.75rem; padding: 2rem; margin-bottom: 1.5rem; }
         .success-icon svg { width: 100px; height: 100px; color: var(--success); margin: 0 auto 1.5rem auto; }
@@ -43,11 +53,15 @@
     </style>
 </head>
 <body>
+    <div id="preloader">
+        <img src="https://i.ibb.co/dwmcHL3T/aOplo9H.png" alt="Logótipo Noskill Sensi" class="preloader-logo">
+    </div>
+
     <div id="main-content">
         <div class="container">
             <div class="card">
                 <div class="success-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 </div>
                 <h1>Compra Aprovada!</h1>
                 <p>Parabéns por se juntar à elite. Seu acesso foi enviado.</p>
@@ -64,3 +78,62 @@
                 <p>
                     Nossa equipe de suporte está online para te ajudar com <strong>prioridade total</strong>. Toque no botão abaixo.
                 </p>
+                <a href="https://wa.me/5568999067380?text=Olá!%20Acabei%20de%20comprar%20e%20preciso%20de%20ajuda." class="button" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 12C2.13 14.03 2.76 15.93 3.86 17.5L2.5 21.5L6.69 20.18C8.26 21.21 10.1 21.88 12.04 21.88C17.5 21.88 21.95 17.43 21.95 12C21.95 6.55 17.5 2 12.04 2Z"/></svg>
+                    <span>FALAR COM O SUPORTE</span>
+                </a>
+            </div>
+
+            <div class="card instructions">
+                <h2>Instruções de Acesso</h2>
+                <div class="email-step">
+                    <p class="email-step-description">
+                        Enviamos os dados de acesso para o e-mail que você informou no checkout.
+                        <br><strong id="customer-email" style="color: #fafafa; word-break: break-all;"></strong>
+                        <br><br>
+                        <span class="spam-warning">Lembre-se de verificar sua caixa de SPAM e PROMOÇÕES!</span>
+                    </p>
+                </div>
+            </div>
+            
+            <p style="font-size: 0.9rem;">Após conseguir acessar, <a href="https://chat.whatsapp.com/BPMDWGysTQFHpB7lKuchJY?mode=ems_copy_t" target="_blank" rel="noopener noreferrer" style="color: var(--text-primary); font-weight: bold;">clique aqui para entrar no Grupo VIP</a>.</p>
+            
+            <footer class="footer">
+                <img src="https://i.ibb.co/dwmcHL3T/aOplo9H.png" alt="Logótipo Noskill Sensi" class="footer-logo">
+                <p>&copy; 2025 Noskill Sensi. Todos os direitos reservados.</p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // SCRIPT DO PRELOADER (RESTAURADO)
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            const mainContent = document.getElementById('main-content');
+            
+            setTimeout(function() { // Simula um tempo de carregamento
+                if (preloader) {
+                    preloader.classList.add('fade-out');
+                    preloader.addEventListener('transitionend', function() {
+                        if (mainContent) {
+                            mainContent.classList.add('fade-in');
+                        }
+                    }, { once: true });
+                }
+            }, 1500); // Duração do preloader em milissegundos
+        });
+
+        // SCRIPT PARA EXIBIR O EMAIL DO CLIENTE
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailDisplay = document.getElementById('customer-email');
+            if (emailDisplay) {
+                const params = new URLSearchParams(window.location.search);
+                const email = params.get('email');
+                if (email) {
+                    emailDisplay.textContent = email;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
