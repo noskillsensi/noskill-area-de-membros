@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Área de Membros Noskill</title>
+    <title>Acesso Liberado - Noskill Sensi</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Teko:wght@700&display=swap" rel="stylesheet">
@@ -13,101 +13,192 @@
             --surface: #1E1E1E;
             --primary: #E53935;
             --primary-hover: #C62828;
+            --secondary: #3b82f6;
+            --secondary-hover: #2563eb;
+            --support: #25D366;
+            --support-hover: #128C7E;
             --text-primary: #FFFFFF;
             --text-secondary: #9ca3af;
-            --input-bg: #2A2A2A;
-            --border: #4B4B4B;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            --success: #22c55e;
         }
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--background);
-            background-image: url('https://i.imgur.com/iaMeAb7.jpeg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
             color: var(--text-primary);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
             margin: 0;
-            padding: 1rem;
+            padding: 1.5rem;
             box-sizing: border-box;
-            position: relative;
         }
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(18, 18, 18, 0.85);
-            backdrop-filter: blur(8px);
-            z-index: 1;
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
         }
-        .login-container {
-            background-color: var(--surface);
-            padding: 2.5rem;
-            border-radius: 0.75rem;
+        .header {
             text-align: center;
-            width: 100%;
-            max-width: 400px;
-            border: 1px solid #333;
-            box-shadow: 0 0 35px rgba(229, 57, 53, 0.3), 0 10px 25px rgba(0,0,0,0.5); /* Efeito de brilho */
-            position: relative;
-            z-index: 5;
-            animation: fadeIn 0.8s ease-out forwards;
+            margin-bottom: 2rem;
         }
         .logo {
             width: 80px;
-            height: auto;
-            margin: 0 auto 1.5rem auto;
+            margin-bottom: 1rem;
         }
-        h2 {
+        h1, h2, h3 {
             font-family: 'Teko', sans-serif;
-            font-size: 2.8rem;
             text-transform: uppercase;
-            margin: 0 0 2.5rem 0;
-            letter-spacing: 2px;
-            line-height: 0.9;
-            text-shadow: 0 0 10px rgba(229, 57, 53, 0.4);
+            margin: 0;
         }
-        .input-group {
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2.2rem; margin-bottom: 1.5rem; }
+        h3 { 
+            font-size: 1.8rem; 
+            margin-top: 0; 
+            margin-bottom: 1.5rem; 
+            border-left: 4px solid var(--primary); 
+            padding-left: 0.75rem;
+        }
+        .card {
+            background-color: var(--surface);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
             margin-bottom: 1.5rem;
-            text-align: left;
+            border: 1px solid #333;
         }
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
+        .hidden { display: none; }
+
+        /* --- Página de Seleção --- */
+        #selection-page .support-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: auto;
+            padding: 0.5rem 1.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            background-color: var(--support);
+            border: none;
+            border-radius: 0.5rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-family: 'Teko', sans-serif;
             font-weight: 700;
-            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        #selection-page .support-button:hover { background-color: var(--support-hover); }
+
+        .device-card {
+            padding: 2rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .device-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+        .device-card h2 { border: none; padding: 0; margin-bottom: 0.5rem; }
+        .device-card p { margin: 0; color: var(--text-secondary); }
+
+        /* --- Páginas de Tutorial --- */
+        .tutorial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .back-button {
+            background: none;
+            border: 1px solid var(--text-secondary);
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 0.5rem 0.8rem;
+            border-radius: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            margin-right: 1rem;
+            transition: all 0.2s;
+        }
+        .back-button:hover {
+            background-color: var(--surface);
+            color: var(--text-primary);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* --- NOVO DESIGN DAS CREDENCIAIS --- */
+        .login-data-container {
+            background-color: #2a2a2a;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .login-field {
+            background-color: var(--background);
+            border: 1px solid #444;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .login-field:last-child {
+            margin-bottom: 0;
+        }
+        .field-icon {
+            flex-shrink: 0;
+            margin-right: 0.75rem;
             color: var(--text-secondary);
         }
-        input {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border-radius: 0.5rem;
-            border: 1px solid var(--border);
-            background-color: var(--input-bg);
-            color: var(--text-primary);
-            box-sizing: border-box;
+        .field-info {
+            flex-grow: 1;
+        }
+        .field-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        .field-value {
             font-size: 1rem;
-            transition: border-color 0.3s, box-shadow 0.3s;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+            user-select: all;
+            word-break: break-all;
         }
-        input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.5);
+        .copy-btn {
+            background: none;
+            border: 1px solid var(--text-secondary);
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-radius: 0.3rem;
+            padding: 0.4rem;
+            transition: all 0.2s;
         }
-        button {
+        .copy-btn:hover {
+            color: var(--text-primary);
+            border-color: var(--text-primary);
+        }
+        .copy-btn.copied {
+            color: var(--success);
+            border-color: var(--success);
+        }
+        
+        .button {
+            display: block;
             width: 100%;
             padding: 0.8rem 1rem;
-            background-color: var(--primary);
             color: var(--text-primary);
             border: none;
             border-radius: 0.5rem;
@@ -116,200 +207,192 @@
             font-size: 1.6rem;
             font-weight: 700;
             letter-spacing: 1px;
-            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
-            margin-top: 0.5rem;
-            box-shadow: 0 4px 15px rgba(229, 57, 53, 0.2);
+            text-align: center;
+            text-decoration: none;
+            box-sizing: border-box;
+            transition: background-color 0.3s;
         }
-        button:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(229, 57, 53, 0.3);
-        }
-        .error {
-            color: #ff7b7b;
-            margin-top: 1.5rem;
-            font-size: 0.9rem;
-            height: 1em;
-        }
-        .help-menu {
-            position: absolute;
-            top: 1.5rem;
-            left: 1.5rem;
-            z-index: 10;
-        }
-        .help-icon {
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-        .help-icon svg {
-            width: 24px;
-            height: 24px;
-            fill: var(--text-secondary);
-            transition: fill 0.2s;
-        }
-        .help-icon:hover svg {
-            fill: var(--text-primary);
-        }
-        .help-dropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: var(--surface);
-            border: 1px solid #333;
+        #android-page .button { background-color: var(--primary); }
+        #android-page .button:hover { background-color: var(--primary-hover); }
+        #ios-page .button { background-color: var(--secondary); }
+        #ios-page .button:hover { background-color: var(--secondary-hover); }
+        
+        .warning-box {
+            background-color: rgba(229, 57, 53, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--text-secondary);
+            padding: 1rem;
             border-radius: 0.5rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            padding: 0.5rem 0;
-            margin-top: 0.5rem;
-            z-index: 10;
-            width: 180px;
-        }
-        .help-dropdown.hidden {
-            display: none;
-        }
-        .help-dropdown a {
-            display: block;
-            color: var(--text-primary);
-            text-decoration: none;
-            padding: 0.75rem 1rem;
             font-size: 0.9rem;
-            transition: background-color 0.2s;
+            margin-bottom: 1.5rem;
         }
-        .help-dropdown a:hover {
-            background-color: #2a2a2a;
-        }
-        .support-link {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-top: 1.5rem;
-            text-align: center;
-        }
-        .support-link a {
-            color: var(--text-primary);
-            font-weight: 700;
-            text-decoration: none;
-        }
-        .support-link a:hover {
-            text-decoration: underline;
-        }
-        .legal-footer {
-            position: fixed;
-            bottom: 1.5rem;
-            left: 0;
-            right: 0;
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            z-index: 1;
-        }
-        .legal-footer a {
-            color: var(--text-secondary);
-            text-decoration: none;
-        }
-        .legal-footer a:hover {
-            color: var(--text-primary);
-            text-decoration: underline;
-        }
-        .legal-footer p {
-            margin-top: 0.5rem;
-        }
-        .forgot-password {
-            font-size: 0.875rem;
-            margin-top: 1rem;
-            text-align: right;
-        }
-        .forgot-password a {
-            color: var(--text-secondary);
-            text-decoration: none;
-        }
-        .forgot-password a:hover {
-            color: var(--text-primary);
-            text-decoration: underline;
-        }
-
+        .warning-box strong { color: var(--primary); }
     </style>
 </head>
 <body>
-    <div class="help-menu">
-        <button id="help-icon-button" class="help-icon" aria-label="Menu de Ajuda">
-            <svg viewBox="0 0 24 24"><path d="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z" /></svg>
-        </button>
-        <div id="help-dropdown" class="help-dropdown hidden">
-            <a href="https://wa.me/556899067380" target="_blank" rel="noopener noreferrer">Ajuda via WhatsApp</a>
-            <a href="https://www.instagram.com/noskill.sensi/" target="_blank" rel="noopener noreferrer">Nosso Instagram</a>
-        </div>
-    </div>
-    <div class="login-container">
-        <img src="https://i.ibb.co/dwmcHL3T/aOplo9H.png" alt="Logo Noskill Sensi" class="logo">
-        <h2>Área de Membros</h2>
-        <form id="login-form">
-            <div class="input-group">
-                <label for="email">E-mail</label>
-                <input type="email" id="email" required>
+    <div class="container">
+        <!-- PÁGINA DE SELEÇÃO INICIAL -->
+        <section id="selection-page">
+            <header class="header">
+                <img src="https://i.ibb.co/dwmcHL3T/aOplo9H.png" alt="Logo Noskill Sensi" class="logo">
+                <h1>Bem-vindo, jogador!</h1>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">Qualquer dificuldade, nosso suporte está pronto para ajudar.</p>
+                <a href="https://wa.me/5568999067380?text=Olá!%20Preciso%20de%20ajuda%20com%20o%20acesso." class="support-button" target="_blank">
+                    <svg fill="currentColor" width="20" height="20" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.731 6.086l.107.175-.327 1.187 1.196-.314.173.106z"/></svg>
+                    <span>Suporte via WhatsApp</span>
+                </a>
+                <h2>Escolha seu dispositivo</h2>
+            </header>
+            <div id="select-android" class="card device-card">
+                <h2>Android</h2>
+                <p>Clique para ver o tutorial e baixar o painel para Android.</p>
             </div>
-            <div class="input-group">
-                <label for="password">Senha</label>
-                <input type="password" id="password" required>
+            <div id="select-ios" class="card device-card">
+                <h2>iPhone (iOS)</h2>
+                <p>Clique para ver o tutorial e baixar o atalho para iOS.</p>
             </div>
-             <div class="forgot-password">
-                <a href="recuperar-senha.html">Esqueci minha senha</a>
+        </section>
+
+        <!-- MÓDULO DO TUTORIAL ANDROID -->
+        <section id="android-page" class="hidden">
+            <header class="tutorial-header">
+                <button class="back-button">&larr; Voltar</button>
+                <h1>Tutorial Android</h1>
+            </header>
+            <div class="card">
+                <h3>PASSO 1: Assista ao Vídeo Tutorial</h3>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/Hvy9NoC7hIM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <h3>PASSO 2: Leia os Avisos Importantes</h3>
+                <div class="warning-box">
+                    <p><strong>ACESSO INDIVIDUAL:</strong> Sua compra dá direito a usar o aplicativo em **APENAS UM** dispositivo.</p>
+                    <p><strong>NÃO COMPARTILHE:</strong> Se compartilhar seu acesso, sua licença será **permanentemente bloqueada**.</p>
+                </div>
+                <h3>PASSO 3: Seus Dados de Login</h3>
+                <div class="login-data-container">
+                    <div class="login-field">
+                        <div class="field-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
+                        <div class="field-info">
+                            <p class="field-label">Usuário</p>
+                            <p class="field-value" id="android-user">acesso@noskill.com</p>
+                        </div>
+                        <button class="copy-btn" data-copy-target="android-user" aria-label="Copiar Usuário">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </button>
+                    </div>
+                    <div class="login-field">
+                        <div class="field-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="field-info">
+                            <p class="field-label">Senha</p>
+                            <p class="field-value" id="android-pass">liberado2025</p>
+                        </div>
+                        <button class="copy-btn" data-copy-target="android-pass" aria-label="Copiar Senha">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </button>
+                    </div>
+                </div>
+                <h3>PASSO 4: Baixe o Painel</h3>
+                <a href="https://drive.google.com/file/d/1QQF1RNllRsX5XIpekOOW-YNGMgl4VTRq/view?usp=sharing" class="button" target="_blank">BAIXAR PAINEL (ANDROID)</a>
             </div>
-            <button type="submit">Entrar</button>
-            <p class="support-link">
-                Problemas com o acesso? <a href="https://wa.me/556899067380" target="_blank">Fale com o suporte</a>.
-            </p>
-        </form>
-        <p id="error-message" class="error"></p>
+        </section>
+
+        <!-- MÓDULO DO TUTORIAL IOS -->
+        <section id="ios-page" class="hidden">
+            <header class="tutorial-header">
+                <button class="back-button">&larr; Voltar</button>
+                <h1>Tutorial iPhone (iOS)</h1>
+            </header>
+            <div class="card">
+                <h3>PASSO 1: Assista ao Vídeo Tutorial</h3>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_IOS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <h3>PASSO 2: Leia os Avisos Importantes</h3>
+                <div class="warning-box">
+                    <p><strong>ACESSO INDIVIDUAL:</strong> Sua compra dá direito a usar o aplicativo em **APENAS UM** dispositivo.</p>
+                    <p><strong>NÃO COMPARTILHE:</strong> Se compartilhar seu acesso, sua licença será **permanentemente bloqueada**.</p>
+                </div>
+                <h3>PASSO 3: Seus Dados de Login</h3>
+                <div class="login-data-container">
+                     <div class="login-field">
+                        <div class="field-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
+                        <div class="field-info">
+                            <p class="field-label">Usuário</p>
+                            <p class="field-value" id="ios-user">acesso@noskill.com</p>
+                        </div>
+                        <button class="copy-btn" data-copy-target="ios-user" aria-label="Copiar Usuário">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </button>
+                    </div>
+                    <div class="login-field">
+                        <div class="field-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                        <div class="field-info">
+                            <p class="field-label">Senha</p>
+                            <p class="field-value" id="ios-pass">liberado2025</p>
+                        </div>
+                        <button class="copy-btn" data-copy-target="ios-pass" aria-label="Copiar Senha">
+                           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </button>
+                    </div>
+                </div>
+                <h3>PASSO 4: Acesse o Painel Web</h3>
+                <a href="https://noskill-painel-web.vercel.app" class="button" target="_blank">ACESSAR PAINEL (IOS)</a>
+            </div>
+        </section>
     </div>
 
-    <footer class="legal-footer">
-        <a href="/termos-de-uso.html" target="_blank">Termos de Uso</a> | <a href="/politica-de-privacidade.html" target="_blank">Política de Privacidade</a>
-        <p>&copy; 2025 Noskill Sensi. Todos os direitos reservados.</p>
-    </footer>
     <script>
-        document.getElementById('login-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const errorMessage = document.getElementById('error-message');
-            errorMessage.textContent = ''; 
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectionPage = document.getElementById('selection-page');
+            const androidPage = document.getElementById('android-page');
+            const iosPage = document.getElementById('ios-page');
+            const selectAndroid = document.getElementById('select-android');
+            const selectIos = document.getElementById('select-ios');
+            const backButtons = document.querySelectorAll('.back-button');
 
-            try {
-                // ATENÇÃO: A rota de login foi ajustada para /login, conforme nosso server.js
-                const response = await fetch('https://noskill-servidor.onrender.com/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username: email, password: password })
+            function showPage(pageToShow) {
+                selectionPage.classList.add('hidden');
+                androidPage.classList.add('hidden');
+                iosPage.classList.add('hidden');
+                pageToShow.classList.remove('hidden');
+                window.scrollTo(0, 0);
+            }
+
+            selectAndroid.addEventListener('click', () => showPage(androidPage));
+            selectIos.addEventListener('click', () => showPage(iosPage));
+            backButtons.forEach(button => {
+                button.addEventListener('click', () => showPage(selectionPage));
+            });
+
+            const copyButtons = document.querySelectorAll('.copy-btn');
+            copyButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetId = button.getAttribute('data-copy-target');
+                    const targetElement = document.getElementById(targetId);
+                    const textToCopy = targetElement.textContent;
+
+                    // Fallback para `execCommand` para máxima compatibilidade
+                    const textArea = document.createElement('textarea');
+                    textArea.value = textToCopy;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    try {
+                        document.execCommand('copy');
+                        const originalIcon = button.innerHTML;
+                        button.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+                        button.classList.add('copied');
+                        setTimeout(() => {
+                            button.innerHTML = originalIcon;
+                            button.classList.remove('copied');
+                        }, 2000);
+                    } catch (err) {
+                        console.error('Falha ao copiar texto: ', err);
+                    }
+                    document.body.removeChild(textArea);
                 });
-                const data = await response.json();
-
-                if (response.ok && data.status === 'success') {
-                    // Simplesmente redireciona em caso de sucesso
-                    window.location.href = 'https://noskill-painel-web.vercel.app'; // URL do seu painel de membros
-                } else {
-                    errorMessage.textContent = data.message || 'Credenciais inválidas.';
-                }
-            } catch (error) {
-                errorMessage.textContent = 'Erro de conexão. Tente novamente.';
-            }
-        });
-
-        const helpButton = document.getElementById('help-icon-button');
-        const helpDropdown = document.getElementById('help-dropdown');
-
-        helpButton.addEventListener('click', (event) => {
-            event.stopPropagation();
-            helpDropdown.classList.toggle('hidden');
-        });
-
-        window.addEventListener('click', () => {
-            if (!helpDropdown.classList.contains('hidden')) {
-                helpDropdown.classList.add('hidden');
-            }
+            });
         });
     </script>
 </body>
 </html>
-
-
