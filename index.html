@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acesso Liberado - Noskill Sensi</title>
+    
+    <meta name="robots" content="noindex, nofollow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Teko:wght@700&display=swap" rel="stylesheet">
@@ -11,11 +13,11 @@
         :root {
             --background: #121212;
             --surface: #1E1E1E;
-            --primary: #E53935;
+            --primary: #E53935; /* Vermelho forte para ação principal e destaque */
             --primary-hover: #C62828;
-            --secondary: #3b82f6;
+            --secondary: #3b82f6; /* Azul para o botão de gratuito */
             --secondary-hover: #2563eb;
-            --support: #25D366;
+            --support: #25D366; /* Verde WhatsApp para suporte */
             --support-hover: #128C7E;
             --text-primary: #FFFFFF;
             --text-secondary: #9ca3af;
@@ -64,8 +66,15 @@
         }
         .hidden { display: none; }
 
-        /* --- Página de Seleção --- */
-        #selection-page .support-button {
+        /* --- Estilos para Botões na Página de Seleção --- */
+        #selection-page .action-button-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .action-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -73,8 +82,7 @@
             width: auto;
             padding: 0.5rem 1.5rem;
             font-size: 1.2rem;
-            margin-bottom: 2rem;
-            background-color: var(--support);
+            margin-bottom: 1rem;
             border: none;
             border-radius: 0.5rem;
             color: var(--text-primary);
@@ -84,7 +92,32 @@
             cursor: pointer;
             transition: background-color 0.2s;
         }
-        #selection-page .support-button:hover { background-color: var(--support-hover); }
+        
+        .support-button { /* Botão de Suporte - Verde */
+            background-color: var(--support);
+        }
+        .support-button:hover { background-color: var(--support-hover); }
+
+        .free-package-button { /* NOVO Botão de Pacote Gratuito - Azul */
+            background-color: var(--secondary);
+        }
+        .free-package-button:hover { background-color: var(--secondary-hover); }
+
+        /* NOVO ESTILO PARA O DESTAQUE DE BÔNUS */
+        .exclusive-badge {
+            display: block;
+            background-color: var(--primary); /* Vermelho para destaque */
+            color: var(--text-primary);
+            font-family: 'Teko', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.3rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+        }
 
         .device-card {
             padding: 2rem;
@@ -231,16 +264,27 @@
 </head>
 <body>
     <div class="container">
-        <!-- PÁGINA DE SELEÇÃO INICIAL -->
+        
         <section id="selection-page">
             <header class="header">
                 <img src="https://i.ibb.co/dwmcHL3T/aOplo9H.png" alt="Logo Noskill Sensi" class="logo">
                 <h1>Bem-vindo, jogador!</h1>
                 <p style="color: var(--text-secondary); margin-bottom: 2rem;">Qualquer dificuldade, nosso suporte está pronto para ajudar.</p>
-                <a href="https://wa.me/5568999067380?text=Olá!%20Preciso%20de%20ajuda%20com%20o%20acesso." class="support-button" target="_blank">
-                    <svg fill="currentColor" width="20" height="20" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.731 6.086l.107.175-.327 1.187 1.196-.314.173.106z"/></svg>
-                    <span>Suporte via WhatsApp</span>
-                </a>
+                
+                <div class="action-button-group">
+                    
+                    <a href="https://wa.me/5568999067380?text=Olá!%20Preciso%20de%20ajuda%20com%20o%20acesso." class="action-button support-button" target="_blank">
+                        <svg fill="currentColor" width="20" height="20" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.731 6.086l.107.175-.327 1.187 1.196-.314.173.106z"/></svg>
+                        <span>Suporte via WhatsApp</span>
+                    </a>
+                    
+                    <span class="exclusive-badge">BÔNUS EXCLUSIVO</span>
+                    <a href="https://wa.me/5568999009733?text=Olá!%20Gostaria%20de%20solicitar%20o%20pacote%20de%20Sensi%20gratuito." class="action-button free-package-button" target="_blank">
+                        <svg fill="currentColor" width="20" height="20" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.731 6.086l.107.175-.327 1.187 1.196-.314.173.106z"/></svg>
+                        <span>Solicitar Pacote de Sensi Gratuito</span>
+                    </a>
+                </div>
+                
                 <h2>Escolha seu dispositivo</h2>
             </header>
             <div id="select-android" class="card device-card">
@@ -253,7 +297,6 @@
             </div>
         </section>
 
-        <!-- MÓDULO DO TUTORIAL ANDROID -->
         <section id="android-page" class="hidden">
             <header class="tutorial-header">
                 <button class="back-button">&larr; Voltar</button>
@@ -272,7 +315,7 @@
                 <h3>PASSO 3: Seus Dados de Login</h3>
                 <div class="login-data-container">
                     <div class="login-field">
-                        <div class="field-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
+                        <div class="field-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 4 0 0 0-4-4H8a4 4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
                         <div class="field-info">
                             <p class="field-label">Usuário</p>
                             <p class="field-value" id="android-user">acesso@noskill.com</p>
@@ -297,7 +340,6 @@
             </div>
         </section>
 
-        <!-- MÓDULO DO TUTORIAL IOS -->
         <section id="ios-page" class="hidden">
             <header class="tutorial-header">
                 <button class="back-button">&larr; Voltar</button>
@@ -316,7 +358,7 @@
                 <h3>PASSO 3: Seus Dados de Login</h3>
                 <div class="login-data-container">
                      <div class="login-field">
-                        <div class="field-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
+                        <div class="field-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 4 0 0 0-4-4H8a4 4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
                         <div class="field-info">
                             <p class="field-label">Usuário</p>
                             <p class="field-value" id="ios-user">acesso@noskill.com</p>
