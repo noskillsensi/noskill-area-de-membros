@@ -18,7 +18,7 @@
             text-align: center;
         }
 
-        /* --- Pré-carregamento --- */
+        /* --- Pré-carregamento (ANIMAÇÃO MANTIDA) --- */
         #preloader {
             position: fixed;
             top: 0;
@@ -45,7 +45,7 @@
             50% { transform: scale(1.03); opacity: 1; }
         }
 
-        /* --- Conteúdo Principal --- */
+        /* --- Conteúdo Principal (ANIMAÇÃO MANTIDA) --- */
         #main-content {
             display: none; /* Inicia oculto */
             opacity: 0;
@@ -58,6 +58,7 @@
             opacity: 1;
         }
 
+        /* --- Estilos dos Cards e Botões (SEU CSS ORIGINAL) --- */
         .container {
             max-width: 500px;
             margin: 0 auto;
@@ -71,9 +72,8 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Ícone SVG Corrigido */
         .success-icon {
-            width: 80px; /* Tamanho fixo para o container */
+            width: 80px;
             height: 80px;
             margin: 0 auto 1rem auto;
         }
@@ -165,41 +165,100 @@
             margin: 0 auto 1rem auto;
             opacity: 0.5;
         }
+
+        /* --- Estilo para o Vídeo Responsivo --- */
+        .video-container {
+            position: relative; 
+            padding-bottom: 56.25%; /* Proporção 16:9 */
+            height: 0; 
+            overflow: hidden; 
+            border-radius: 0.5rem; 
+            margin-bottom: 1rem;
+            background-color: #000; /* Fundo preto enquanto carrega */
+        }
+        .video-container iframe {
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+        }
+
     </style>
 </head>
 <body>
+    
     <div id="preloader">
         <img src="https://i.ibb.co/dwmcHL3T/aOplo9H.png" alt="Logótipo Noskill Sensi" class="preloader-logo">
     </div>
 
     <div id="main-content">
         <div class="container">
+
             <div class="card">
                 <div class="success-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 </div>
                 <h1>Compra Aprovada!</h1>
-                <p>Parabéns por se juntar à elite. Seu acesso foi enviado.</p>
-            </div>
-
-            <div class="card support-card">
-                <h2>ATENÇÃO: ALGUM PROBLEMA COM A COMPRA?</h2>
-                <p>Se o seu acesso não chegar em <strong>5 minutos</strong>, ou se houver <strong>qualquer outra dúvida</strong>, não se preocupe.</p>
-                <p style="font-size: 1.1rem; color: #FFFFFF;"><strong>A forma mais rápida e garantida de resolver é falando diretamente conosco.</strong></p>
-                <p>Nossa equipe de suporte está online para te ajudar com <strong>prioridade total</strong>. Toque no botão abaixo.</p>
-                <a href="https://wa.me/5568999009733?text=Olá!%20Acabei%20de%20comprar%20e%20preciso%20de%20ajuda." class="button" target="_blank" rel="noopener noreferrer">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 12C2.13 14.03 2.76 15.93 3.86 17.5L2.5 21.5L6.69 20.18C8.26 21.21 10.1 21.88 12.04 21.88C17.5 21.88 21.95 17.43 21.95 12C21.95 6.55 17.5 2 12.04 2Z"/></svg>
-                    <span>FALAR COM O SUPORTE</span>
-                </a>
+                <p>Eba! 🥳 Seu acesso já foi enviado para seu e-mail.</p>
             </div>
 
             <div class="card">
-                <h2>Instruções de Acesso</h2>
-                <div class="email-step">
-                    <p style="margin:0;">Enviamos os dados de acesso para o e-mail que você informou no checkout.<br><strong id="customer-email" style="color: #FFFFFF; word-break: break-all;"></strong><br><br><span class="spam-warning">Lembre-se de verificar sua caixa de SPAM e PROMOÇÕES!</span></p>
+                <h2>📺 NÃO ACHOU O E-MAIL?</h2>
+                <p style="color: #FFFFFF; font-size: 1.1rem; margin-bottom: 1.5rem;"><strong>Assista este vídeo de 1 minuto!</strong></p>
+                
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/ID_DO_SEU_VIDEO_AQUI" 
+                        title="Como Acessar seu Produto" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                
+                <p>Mostramos onde o e-mail se esconde (dica: 99% das vezes tá na pasta <strong>SPAM</strong>!)</p>
+            </div>
+
+            <div class="card">
+                <h2>SIGA OS PASSOS:</h2>
+                <div class="email-step" style="text-align: center;">
+                    <p style="margin:0; font-size: 1rem;"><strong>PASSO 1:</strong> Verifique o e-mail abaixo.</p>
+                    <p style="color: #FFFFFF; word-break: break-all; font-size: 1.1rem; margin: 0.5rem 0;" id="customer-email">[seu-email-aparece-aqui]</p>
+                    <p style="margin: 1rem 0 0 0;">Esse é o e-mail que você digitou. Tá certo?</p>
+                </div>
+                
+                <div class="email-step" style="margin-top: 1rem; text-align: center; border-left-color: #ffa726;">
+                    <p style="margin:0; font-size: 1rem;"><strong>PASSO 2:</strong> Procure nas pastas:</p>
+                    <p style="margin: 0.5rem 0 0 0;" class="spam-warning">CAIXA DE ENTRADA, SPAM e PROMOÇÕES!</p>
                 </div>
             </div>
-            
+
+            <div class="card support-card">
+                <h2>DEU RUIM? NÃO ACHOU? DIGITOU ERRADO?</h2>
+                <p>CALMA! 🧘‍♂️ Não se preocupe e nem precisa ir no seu banco.</p>
+                <p style="font-size: 1.1rem; color: #FFFFFF;"><strong>A forma mais rápida é chamar a gente no Zap!</strong></p>
+                <p>Nossa equipe tá online pra te ajudar NA HORA.</p>
+                <a href="https://wa.me/5568999009733?text=Olá!%20Acabei%20de%20comprar%20e%20preciso%20de%20ajuda." class="button" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 12C2.13 14.03 2.76 15.93 3.86 17.5L2.5 21.5L6.69 20.18C8.26 21.21 10.1 21.88 12.04 21.88C17.5 21.88 21.95 17.43 21.95 12C21.95 6.55 17.5 2 12.04 2Z"/></svg>
+                    <span>FALAR COM O SUPORTE (RESOLVE JÁ)</span>
+                </a>
+            </div>
+
+            <div class="card" style="border: 1px solid #e11d48;">
+                <h2 style="color: #e11d48;">⚠️ AVISO IMPORTANTE (PAPO RETO) ⚠️</h2>
+                <p style="color: #FFFFFF; font-size: 1.1rem;"><strong>POR FAVOR: NÃO CONTESTE O PIX NO SEU BANCO!</strong></p>
+                <p>O botão "Contestar" (MED) no app do seu banco <strong>NÃO é para pedir reembolso</strong>.</p>
+                <p>Aquele botão é para acusar a gente de <strong>GOLPE ou FRAUDE</strong> 🚔.</p>
+                <p style="color: #FFFFFF; margin-top: 1rem;"><strong>Se você apertar lá, o que acontece?</strong></p>
+                <p>1. ❌ Você <strong>NÃO</strong> recebe o dinheiro na hora.</p>
+                <p>2. ⏳ Seu dinheiro fica <strong>BLOQUEADO por 90 dias</strong> (ou mais) até o banco investigar.</p>
+                <p>3. ⛔ Você atrasa seu próprio reembolso.</p>
+                <br>
+                <p style="color: #22c55e; font-size: 1.1rem;"><strong>QUER REEMBOLSO? SE ARREPENDEU?</strong></p>
+                <p>É seu direito! É só chamar a gente no <strong>botão verde de WhatsApp</strong> ali em cima. A gente devolve no mesmo dia, sem estresse. Tamo junto! 👊</p>
+            </div>
+
             <p style="font-size: 0.9rem;">Após conseguir acessar, <a href="https://chat.whatsapp.com/BPMDWGysTQFHpB7lKuchJY?mode=ems_copy_t" target="_blank" rel="noopener noreferrer" style="color: #FFFFFF; font-weight: bold;">clique aqui para entrar no Grupo VIP</a>.</p>
             
             <footer class="footer">
@@ -210,6 +269,7 @@
     </div>
 
     <script>
+        // Script do Preloader (MANTIDO)
         window.addEventListener('load', function() {
             const preloader = document.getElementById('preloader');
             const mainContent = document.getElementById('main-content');
@@ -228,13 +288,17 @@
             }, 1500);
         });
 
+        // Script do E-mail (MANTIDO)
         document.addEventListener('DOMContentLoaded', function() {
             const emailDisplay = document.getElementById('customer-email');
             if (emailDisplay) {
                 const params = new URLSearchParams(window.location.search);
-                const email = params.get('email');
+                // Adicionei || params.get('customer_email') para garantir compatibilidade
+                const email = params.get('email') || params.get('customer_email');
                 if (email) {
                     emailDisplay.textContent = email;
+                } else {
+                    emailDisplay.textContent = "[ERRO: E-MAIL NÃO ENCONTRADO]";
                 }
             }
         });
