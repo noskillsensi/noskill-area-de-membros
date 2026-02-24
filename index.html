@@ -17,8 +17,6 @@
             --primary-hover: #C62828;
             --secondary: #3b82f6;
             --secondary-hover: #2563eb;
-            --support: #25D366;
-            --support-hover: #128C7E;
             --text-primary: #FFFFFF;
             --text-secondary: #9ca3af;
             --success: #22c55e;
@@ -69,53 +67,6 @@
             border: 1px solid #333;
         }
         .hidden { display: none; }
-
-        #selection-page .action-button-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-        
-        .action-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            width: auto;
-            padding: 0.5rem 1.5rem;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            border: none;
-            border-radius: 0.5rem;
-            color: var(--text-primary);
-            text-decoration: none;
-            font-family: 'Teko', sans-serif;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        
-        .support-button { background-color: var(--support); }
-        .support-button:hover { background-color: var(--support-hover); }
-
-        .free-package-button { background-color: var(--secondary); }
-        .free-package-button:hover { background-color: var(--secondary-hover); }
-
-        .exclusive-badge {
-            display: block;
-            background-color: var(--primary);
-            color: var(--text-primary);
-            font-family: 'Teko', sans-serif;
-            font-weight: 700;
-            font-size: 0.9rem;
-            padding: 0.2rem 0.5rem;
-            border-radius: 0.3rem;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-        }
 
         .device-card {
             padding: 2rem;
@@ -279,9 +230,6 @@
             cursor: not-allowed;
             pointer-events: none;
         }
-
-        .danger-button { background-color: transparent; border: 1px solid var(--danger); color: var(--danger); margin-top: 2rem; }
-        .danger-button:hover { background-color: rgba(239, 68, 68, 0.1); }
         
         .danger-solid-button { background-color: var(--danger); margin-top: 1rem; }
         .danger-solid-button:hover { background-color: var(--danger-hover); }
@@ -330,6 +278,41 @@
             margin-top: -1.5rem;
             margin-bottom: 2rem;
         }
+
+        /* ESTILOS DO FORMULÁRIO DE REEMBOLSO */
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #444;
+            background-color: var(--background);
+            color: var(--text-primary);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .error-message {
+            color: var(--danger);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -339,20 +322,7 @@
             <header class="header">
                 <img src="https://i.ibb.co/dwmcHL3T/aOplo9H.png" alt="Logo Noskill Sensi" class="logo">
                 <h1>Bem-vindo, jogador!</h1>
-                <p style="color: var(--text-secondary); margin-bottom: 2rem;">Qualquer dificuldade o nosso suporte está pronto para ajudar.</p>
-                
-                <div class="action-button-group">
-                    <a href="https://wa.me/5568999009733?text=Olá!%20Preciso%20de%20ajuda%20com%20o%20acesso." class="action-button support-button" target="_blank">
-                        <svg fill="currentColor" width="20" height="20" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.731 6.086l.107.175-.327 1.187 1.196-.314.173.106z"/></svg>
-                        <span>Suporte via WhatsApp</span>
-                    </a>
-                    
-                    <span class="exclusive-badge">BÔNUS EXCLUSIVO</span>
-                    <a href="https://wa.me/5568999009733?text=Olá!%20Gostaria%20de%20solicitar%20o%20pacote%20de%20Sensi%20gratuito." class="action-button free-package-button" target="_blank">
-                        <svg fill="currentColor" width="20" height="20" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.731 6.086l.107.175-.327 1.187 1.196-.314.173.106z"/></svg>
-                        <span>Solicitar Pacote de Sensi Gratuito</span>
-                    </a>
-                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">Selecione o seu sistema operacional abaixo para iniciar.</p>
                 
                 <h2>Escolha seu dispositivo</h2>
             </header>
@@ -508,16 +478,25 @@
                 <h1>Setor de Reembolso</h1>
             </header>
             <div class="card">
-                <h2>Tem certeza da sua decisão?</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Entendemos que a adaptação a uma sensi de alta performance leva tempo e exige prática. Muitos jogadores desistem nos primeiros dias antes de alcançar o resultado real.</p>
+                <h2>Identificação do Cliente</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Preencha os dados abaixo exatamente como foram registrados no momento da compra para localizarmos o seu pedido no sistema.</p>
                 
-                <div class="guide-box" style="border-color: var(--danger);">
+                <div class="form-group">
+                    <label for="refund-name">Nome Completo</label>
+                    <input type="text" id="refund-name" placeholder="Digite seu nome completo">
+                </div>
+
+                <div class="form-group">
+                    <label for="refund-email">E-mail da Compra</label>
+                    <input type="email" id="refund-email" placeholder="Digite o e-mail usado na compra">
+                    <div id="refund-error" class="error-message">Por favor preencha todos os campos para prosseguir.</div>
+                </div>
+
+                <div class="guide-box" style="border-color: var(--danger); margin-top: 2rem;">
                     <h4 style="color: var(--danger);">Aviso Importante</h4>
                     <p>Ao confirmar a solicitação o seu acesso ao Painel Noskill e aos Módulos de Sensi será bloqueado de forma imediata e permanente em nosso banco de dados.</p>
                     <p>Você perderá sua licença e será impedido de realizar novas compras no futuro utilizando seus dados atuais.</p>
                 </div>
-
-                <p style="text-align: center; margin-bottom: 2rem;">Se você não testou tempo suficiente ou precisa de ajuda técnica sugerimos buscar nosso suporte no WhatsApp antes de prosseguir.</p>
 
                 <button id="btn-confirm-refund" class="button danger-solid-button">CONFIRMAR SOLICITAÇÃO</button>
             </div>
@@ -530,7 +509,7 @@
             <div class="card">
                 <p style="text-align: center; color: var(--text-secondary); font-size: 1.1rem;">Sua solicitação de reembolso foi recebida e encaminhada para a nossa equipe financeira.</p>
                 
-                <div class="timer-display" id="countdown-timer">72:00:00</div>
+                <div class="timer-display" id="countdown-timer">72h 00m 00s</div>
                 <div class="timer-label">Tempo restante para conclusão</div>
 
                 <div class="guide-box">
@@ -561,7 +540,10 @@
             
             const backButtons = document.querySelectorAll('.back-button');
 
-            // Verifica se já existe um reembolso em andamento salvo no navegador
+            const refundNameInput = document.getElementById('refund-name');
+            const refundEmailInput = document.getElementById('refund-email');
+            const refundErrorMsg = document.getElementById('refund-error');
+
             if (localStorage.getItem('noskill_refund_end_time')) {
                 showPage(refundAnalysisPage);
                 startTimer();
@@ -583,7 +565,16 @@
             btnOpenRefund.addEventListener('click', () => showPage(refundPage));
             
             btnConfirmRefund.addEventListener('click', () => {
-                // Configura o timer de 72 horas (em milissegundos)
+                const nameValue = refundNameInput.value.trim();
+                const emailValue = refundEmailInput.value.trim();
+
+                if (!nameValue || !emailValue) {
+                    refundErrorMsg.style.display = 'block';
+                    return;
+                }
+
+                refundErrorMsg.style.display = 'none';
+
                 const endTime = Date.now() + (72 * 60 * 60 * 1000);
                 localStorage.setItem('noskill_refund_end_time', endTime);
                 showPage(refundAnalysisPage);
@@ -591,10 +582,12 @@
             });
 
             backButtons.forEach(button => {
-                button.addEventListener('click', () => showPage(selectionPage));
+                button.addEventListener('click', () => {
+                    refundErrorMsg.style.display = 'none';
+                    showPage(selectionPage);
+                });
             });
 
-            // Lógica do cronômetro
             let timerInterval;
             function startTimer() {
                 const timerElement = document.getElementById('countdown-timer');
@@ -626,7 +619,6 @@
                 timerInterval = setInterval(update, 1000);
             }
 
-            // Lógica de copiar texto
             const copyButtons = document.querySelectorAll('.copy-btn');
             copyButtons.forEach(button => {
                 button.addEventListener('click', () => {
