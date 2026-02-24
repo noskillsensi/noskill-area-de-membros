@@ -13,15 +13,17 @@
         :root {
             --background: #121212;
             --surface: #1E1E1E;
-            --primary: #E53935; /* Vermelho forte para ação principal e destaque */
+            --primary: #E53935;
             --primary-hover: #C62828;
-            --secondary: #3b82f6; /* Azul para o botão de gratuito */
+            --secondary: #3b82f6;
             --secondary-hover: #2563eb;
-            --support: #25D366; /* Verde WhatsApp para suporte */
+            --support: #25D366;
             --support-hover: #128C7E;
             --text-primary: #FFFFFF;
             --text-secondary: #9ca3af;
             --success: #22c55e;
+            --disabled: #444444;
+            --text-disabled: #888888;
         }
         body {
             font-family: 'Poppins', sans-serif;
@@ -66,7 +68,6 @@
         }
         .hidden { display: none; }
 
-        /* --- Estilos para Botões na Página de Seleção --- */
         #selection-page .action-button-group {
             display: flex;
             flex-direction: column;
@@ -93,20 +94,19 @@
             transition: background-color 0.2s;
         }
         
-        .support-button { /* Botão de Suporte - Verde */
+        .support-button {
             background-color: var(--support);
         }
         .support-button:hover { background-color: var(--support-hover); }
 
-        .free-package-button { /* NOVO Botão de Pacote Gratuito - Azul */
+        .free-package-button {
             background-color: var(--secondary);
         }
         .free-package-button:hover { background-color: var(--secondary-hover); }
 
-        /* NOVO ESTILO PARA O DESTAQUE DE BÔNUS */
         .exclusive-badge {
             display: block;
-            background-color: var(--primary); /* Vermelho para destaque */
+            background-color: var(--primary);
             color: var(--text-primary);
             font-family: 'Teko', sans-serif;
             font-weight: 700;
@@ -131,7 +131,6 @@
         .device-card h2 { border: none; padding: 0; margin-bottom: 0.5rem; }
         .device-card p { margin: 0; color: var(--text-secondary); }
 
-        /* --- Páginas de Tutorial --- */
         .tutorial-header {
             display: flex;
             align-items: center;
@@ -170,7 +169,6 @@
             height: 100%;
         }
         
-        /* --- NOVO DESIGN DAS CREDENCIAIS --- */
         .login-data-container {
             background-color: #2a2a2a;
             padding: 1.5rem;
@@ -244,12 +242,20 @@
             text-decoration: none;
             box-sizing: border-box;
             transition: background-color 0.3s;
+            margin-bottom: 1rem;
         }
         #android-page .button { background-color: var(--primary); }
         #android-page .button:hover { background-color: var(--primary-hover); }
         #ios-page .button { background-color: var(--secondary); }
         #ios-page .button:hover { background-color: var(--secondary-hover); }
         
+        .button.disabled {
+            background-color: var(--disabled) !important;
+            color: var(--text-disabled) !important;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
         .warning-box {
             background-color: rgba(229, 57, 53, 0.1);
             border: 1px solid var(--primary);
@@ -303,16 +309,16 @@
                 <h1>Tutorial Android</h1>
             </header>
             <div class="card">
-                <h3>PASSO 1: Assista ao Vídeo Tutorial</h3>
+                <h3>PASSO 1 - Assista ao Vídeo Tutorial</h3>
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/Hvy9NoC7hIM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                <h3>PASSO 2: Leia os Avisos Importantes</h3>
+                <h3>PASSO 2 - Leia os Avisos Importantes</h3>
                 <div class="warning-box">
-                    <p><strong>ACESSO INDIVIDUAL:</strong> Sua compra dá direito a usar o aplicativo em **APENAS UM** dispositivo.</p>
-                    <p><strong>NÃO COMPARTILHE:</strong> Se compartilhar seu acesso, sua licença será **permanentemente bloqueada**.</p>
+                    <p><strong>ACESSO INDIVIDUAL</strong> Sua compra dá direito a usar o aplicativo em APENAS UM dispositivo.</p>
+                    <p><strong>NÃO COMPARTILHE</strong> Se compartilhar seu acesso, sua licença será permanentemente bloqueada.</p>
                 </div>
-                <h3>PASSO 3: Seus Dados de Login</h3>
+                <h3>PASSO 3 - Seus Dados de Login</h3>
                 <div class="login-data-container">
                     <div class="login-field">
                         <div class="field-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 4 0 0 0-4-4H8a4 4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
@@ -335,27 +341,30 @@
                         </button>
                     </div>
                 </div>
-                <h3>PASSO 4: Baixe o Painel</h3>
-                <a href="https://drive.google.com/file/d/1QQF1RNllRsX5XIpekOOW-YNGMgl4VTRq/view?usp=sharing" class="button" target="_blank">BAIXAR PAINEL (ANDROID)</a>
+                <h3>PASSO 4 - Baixe o Painel</h3>
+                <a href="https://drive.google.com/file/d/1QQF1RNllRsX5XIpekOOW-YNGMgl4VTRq/view?usp=sharing" class="button" target="_blank">BAIXAR PAINEL ANDROID</a>
+                
+                <h3>PASSO 5 - Módulo de Sensi</h3>
+                <a href="#" class="button disabled">SERÁ ADICIONADA EM BREVE</a>
             </div>
         </section>
 
         <section id="ios-page" class="hidden">
             <header class="tutorial-header">
                 <button class="back-button">&larr; Voltar</button>
-                <h1>Tutorial iPhone (iOS)</h1>
+                <h1>Tutorial iPhone</h1>
             </header>
             <div class="card">
-                <h3>PASSO 1: Assista ao Vídeo Tutorial</h3>
+                <h3>PASSO 1 - Assista ao Vídeo Tutorial</h3>
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/VIDEO_ID_IOS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                <h3>PASSO 2: Leia os Avisos Importantes</h3>
+                <h3>PASSO 2 - Leia os Avisos Importantes</h3>
                 <div class="warning-box">
-                    <p><strong>ACESSO INDIVIDUAL:</strong> Sua compra dá direito a usar o aplicativo em **APENAS UM** dispositivo.</p>
-                    <p><strong>NÃO COMPARTILHE:</strong> Se compartilhar seu acesso, sua licença será **permanentemente bloqueada**.</p>
+                    <p><strong>ACESSO INDIVIDUAL</strong> Sua compra dá direito a usar o aplicativo em APENAS UM dispositivo.</p>
+                    <p><strong>NÃO COMPARTILHE</strong> Se compartilhar seu acesso, sua licença será permanentemente bloqueada.</p>
                 </div>
-                <h3>PASSO 3: Seus Dados de Login</h3>
+                <h3>PASSO 3 - Seus Dados de Login</h3>
                 <div class="login-data-container">
                      <div class="login-field">
                         <div class="field-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 4 0 0 0-4-4H8a4 4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
@@ -378,8 +387,11 @@
                         </button>
                     </div>
                 </div>
-                <h3>PASSO 4: Acesse o Painel Web</h3>
-                <a href="https://noskill-painel-web.vercel.app" class="button" target="_blank">ACESSAR PAINEL (IOS)</a>
+                <h3>PASSO 4 - Acesse o Painel Web</h3>
+                <a href="https://noskill-painel-web.vercel.app" class="button" target="_blank">ACESSAR PAINEL IOS</a>
+
+                <h3>PASSO 5 - Módulo de Sensi</h3>
+                <a href="https://www.mediafire.com/file/q8kj113u4cp4sm9/NOSKILL_IOS.zip/file" class="button" target="_blank">BAIXAR SENSI IOS</a>
             </div>
         </section>
     </div>
@@ -414,7 +426,6 @@
                     const targetElement = document.getElementById(targetId);
                     const textToCopy = targetElement.textContent;
 
-                    // Fallback para `execCommand` para máxima compatibilidade
                     const textArea = document.createElement('textarea');
                     textArea.value = textToCopy;
                     document.body.appendChild(textArea);
@@ -429,7 +440,7 @@
                             button.classList.remove('copied');
                         }, 2000);
                     } catch (err) {
-                        console.error('Falha ao copiar texto: ', err);
+                        console.error('Falha ao copiar texto ', err);
                     }
                     document.body.removeChild(textArea);
                 });
