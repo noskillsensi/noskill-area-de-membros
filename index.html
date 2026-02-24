@@ -24,6 +24,8 @@
             --success: #22c55e;
             --disabled: #444444;
             --text-disabled: #888888;
+            --danger: #ef4444;
+            --danger-hover: #dc2626;
         }
         body {
             font-family: 'Poppins', sans-serif;
@@ -55,7 +57,7 @@
         h3 { 
             font-size: 1.8rem; 
             margin-top: 0; 
-            margin-bottom: 1.5rem; 
+            margin-bottom: 1.2rem; 
             border-left: 4px solid var(--primary); 
             padding-left: 0.75rem;
         }
@@ -94,14 +96,10 @@
             transition: background-color 0.2s;
         }
         
-        .support-button {
-            background-color: var(--support);
-        }
+        .support-button { background-color: var(--support); }
         .support-button:hover { background-color: var(--support-hover); }
 
-        .free-package-button {
-            background-color: var(--secondary);
-        }
+        .free-package-button { background-color: var(--secondary); }
         .free-package-button:hover { background-color: var(--secondary-hover); }
 
         .exclusive-badge {
@@ -184,17 +182,13 @@
             padding: 0.75rem;
             margin-bottom: 1rem;
         }
-        .login-field:last-child {
-            margin-bottom: 0;
-        }
+        .login-field:last-child { margin-bottom: 0; }
         .field-icon {
             flex-shrink: 0;
             margin-right: 0.75rem;
             color: var(--text-secondary);
         }
-        .field-info {
-            flex-grow: 1;
-        }
+        .field-info { flex-grow: 1; }
         .field-label {
             font-size: 0.8rem;
             color: var(--text-secondary);
@@ -226,6 +220,36 @@
             border-color: var(--success);
         }
         
+        .guide-box {
+            background-color: var(--background);
+            border: 1px solid #333;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .guide-box h4 {
+            font-family: 'Teko', sans-serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-top: 0;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        .guide-box p, .guide-box li {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+        .guide-box ul, .guide-box ol {
+            padding-left: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .highlight-text {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
         .button {
             display: block;
             width: 100%;
@@ -256,6 +280,12 @@
             pointer-events: none;
         }
 
+        .danger-button { background-color: transparent; border: 1px solid var(--danger); color: var(--danger); margin-top: 2rem; }
+        .danger-button:hover { background-color: rgba(239, 68, 68, 0.1); }
+        
+        .danger-solid-button { background-color: var(--danger); margin-top: 1rem; }
+        .danger-solid-button:hover { background-color: var(--danger-hover); }
+
         .warning-box {
             background-color: rgba(229, 57, 53, 0.1);
             border: 1px solid var(--primary);
@@ -266,6 +296,40 @@
             margin-bottom: 1.5rem;
         }
         .warning-box strong { color: var(--primary); }
+
+        .footer-links {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #333;
+        }
+        .text-link {
+            color: var(--text-secondary);
+            text-decoration: underline;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .text-link:hover { color: var(--text-primary); }
+
+        .timer-display {
+            font-family: 'Teko', sans-serif;
+            font-size: 4rem;
+            color: var(--primary);
+            text-align: center;
+            letter-spacing: 2px;
+            margin: 2rem 0;
+            text-shadow: 0 0 20px rgba(229, 57, 53, 0.4);
+        }
+        .timer-label {
+            text-align: center;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            margin-top: -1.5rem;
+            margin-bottom: 2rem;
+        }
     </style>
 </head>
 <body>
@@ -275,10 +339,9 @@
             <header class="header">
                 <img src="https://i.ibb.co/dwmcHL3T/aOplo9H.png" alt="Logo Noskill Sensi" class="logo">
                 <h1>Bem-vindo, jogador!</h1>
-                <p style="color: var(--text-secondary); margin-bottom: 2rem;">Qualquer dificuldade, nosso suporte está pronto para ajudar.</p>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">Qualquer dificuldade o nosso suporte está pronto para ajudar.</p>
                 
                 <div class="action-button-group">
-                    
                     <a href="https://wa.me/5568999009733?text=Olá!%20Preciso%20de%20ajuda%20com%20o%20acesso." class="action-button support-button" target="_blank">
                         <svg fill="currentColor" width="20" height="20" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.731 6.086l.107.175-.327 1.187 1.196-.314.173.106z"/></svg>
                         <span>Suporte via WhatsApp</span>
@@ -295,11 +358,15 @@
             </header>
             <div id="select-android" class="card device-card">
                 <h2>Android</h2>
-                <p>Clique para ver o tutorial e baixar o painel para Android.</p>
+                <p>Clique para ver o tutorial e instruções do painel para Android.</p>
             </div>
             <div id="select-ios" class="card device-card">
-                <h2>iPhone (iOS)</h2>
-                <p>Clique para ver o tutorial e baixar o atalho para iOS.</p>
+                <h2>iPhone Apple</h2>
+                <p>Clique para ver o tutorial e instruções do painel para iOS.</p>
+            </div>
+
+            <div class="footer-links">
+                <span id="btn-open-refund" class="text-link">Problemas com a compra ou Reembolso</span>
             </div>
         </section>
 
@@ -313,11 +380,13 @@
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/Hvy9NoC7hIM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                <h3>PASSO 2 - Leia os Avisos Importantes</h3>
+                
+                <h3>PASSO 2 - Avisos e Regras Inegociáveis</h3>
                 <div class="warning-box">
-                    <p><strong>ACESSO INDIVIDUAL</strong> Sua compra dá direito a usar o aplicativo em APENAS UM dispositivo.</p>
-                    <p><strong>NÃO COMPARTILHE</strong> Se compartilhar seu acesso, sua licença será permanentemente bloqueada.</p>
+                    <p><strong>ACESSO INDIVIDUAL</strong> - Sua compra garante o uso do aplicativo em APENAS UM dispositivo. Nosso sistema rastreia o registro do aparelho.</p>
+                    <p><strong>NÃO COMPARTILHE</strong> - Qualquer tentativa de login em múltiplos aparelhos resultará no banimento automático e permanente da sua licença sem direito a reembolso.</p>
                 </div>
+
                 <h3>PASSO 3 - Seus Dados de Login</h3>
                 <div class="login-data-container">
                     <div class="login-field">
@@ -341,11 +410,29 @@
                         </button>
                     </div>
                 </div>
-                <h3>PASSO 4 - Baixe o Painel</h3>
+
+                <h3>PASSO 4 - Instalação e Execução</h3>
+                <div class="guide-box">
+                    <h4>Como iniciar corretamente</h4>
+                    <ol>
+                        <li>Faça o download do arquivo APK através do botão azul abaixo.</li>
+                        <li>Caso o celular solicite libere a permissão para instalar fontes desconhecidas nas configurações do Android.</li>
+                        <li>Abra o aplicativo Noskill Sensi e insira exatamente os dados de login copiados acima.</li>
+                        <li>Ative as otimizações desejadas no painel. Mantenha o recurso de janela flutuante ativo caso deseje alterar algo durante as partidas.</li>
+                    </ol>
+                </div>
                 <a href="https://drive.google.com/file/d/1QQF1RNllRsX5XIpekOOW-YNGMgl4VTRq/view?usp=sharing" class="button" target="_blank">BAIXAR PAINEL ANDROID</a>
                 
-                <h3>PASSO 5 - Módulo de Sensi</h3>
-                <a href="#" class="button disabled">SERÁ ADICIONADA EM BREVE</a>
+                <h3>PASSO 5 - Prática e Adaptação</h3>
+                <div class="guide-box">
+                    <h4>O segredo do resultado</h4>
+                    <p>A alta performance não acontece como mágica exige <span class="highlight-text">costume e memória muscular</span>. Nossos scripts alteram de forma drástica o tempo de resposta e o peso da tela do seu dispositivo.</p>
+                    <p>Recomendamos fortemente que nos primeiros dias você jogue focando apenas em treinamento. Sua mira vai passar da cabeça nas primeiras vezes e isso é o processo natural de adaptação.</p>
+                    <p>Mantenha a constância faça pequenos ajustes na sua jogabilidade e o resultado será definitivo.</p>
+                </div>
+
+                <h3>PASSO 6 - Módulo Adicional</h3>
+                <a href="#" class="button disabled">SENSI EXTRA EM BREVE</a>
             </div>
         </section>
 
@@ -359,11 +446,13 @@
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/VIDEO_ID_IOS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                <h3>PASSO 2 - Leia os Avisos Importantes</h3>
+                
+                <h3>PASSO 2 - Avisos e Regras Inegociáveis</h3>
                 <div class="warning-box">
-                    <p><strong>ACESSO INDIVIDUAL</strong> Sua compra dá direito a usar o aplicativo em APENAS UM dispositivo.</p>
-                    <p><strong>NÃO COMPARTILHE</strong> Se compartilhar seu acesso, sua licença será permanentemente bloqueada.</p>
+                    <p><strong>ACESSO INDIVIDUAL</strong> - Sua compra garante o uso do aplicativo em APENAS UM dispositivo. Nosso sistema rastreia o registro do aparelho.</p>
+                    <p><strong>NÃO COMPARTILHE</strong> - Qualquer tentativa de login em múltiplos aparelhos resultará no banimento automático e permanente da sua licença sem direito a reembolso.</p>
                 </div>
+
                 <h3>PASSO 3 - Seus Dados de Login</h3>
                 <div class="login-data-container">
                      <div class="login-field">
@@ -387,11 +476,72 @@
                         </button>
                     </div>
                 </div>
-                <h3>PASSO 4 - Acesse o Painel Web</h3>
+
+                <h3>PASSO 4 - Instalação e Execução</h3>
+                <div class="guide-box">
+                    <h4>Como iniciar corretamente</h4>
+                    <ol>
+                        <li>Acesse o Painel Web exclusivo para o sistema Apple através do botão azul abaixo.</li>
+                        <li>Para facilitar o uso diário adicione a página à tela inicial do seu iPhone criando um atalho direto.</li>
+                        <li>Insira as credenciais de acesso copiadas acima para liberar as funções.</li>
+                        <li>Faça o download do Módulo de Sensi ZIP no Passo 6 e aplique as configurações avançadas conforme demonstrado no vídeo.</li>
+                    </ol>
+                </div>
                 <a href="https://noskill-painel-web.vercel.app" class="button" target="_blank">ACESSAR PAINEL IOS</a>
 
-                <h3>PASSO 5 - Módulo de Sensi</h3>
+                <h3>PASSO 5 - Prática e Adaptação</h3>
+                <div class="guide-box">
+                    <h4>O segredo do resultado</h4>
+                    <p>A alta performance não acontece como mágica exige <span class="highlight-text">costume e memória muscular</span>. Nossos módulos alteram de forma drástica o tempo de resposta e o tracking de tela no iOS.</p>
+                    <p>Recomendamos fortemente que nos primeiros dias você jogue focando apenas em treinamento. Sua mira vai se comportar de forma diferente no início e isso é o processo natural de adaptação do cérebro.</p>
+                    <p>Mantenha a constância faça pequenos ajustes caso sinta necessidade e o resultado será notório em poucas sessões.</p>
+                </div>
+
+                <h3>PASSO 6 - Módulo de Sensi</h3>
                 <a href="https://www.mediafire.com/file/q8kj113u4cp4sm9/NOSKILL_IOS.zip/file" class="button" target="_blank">BAIXAR SENSI IOS</a>
+            </div>
+        </section>
+
+        <section id="refund-page" class="hidden">
+            <header class="tutorial-header">
+                <button class="back-button">&larr; Voltar</button>
+                <h1>Setor de Reembolso</h1>
+            </header>
+            <div class="card">
+                <h2>Tem certeza da sua decisão?</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Entendemos que a adaptação a uma sensi de alta performance leva tempo e exige prática. Muitos jogadores desistem nos primeiros dias antes de alcançar o resultado real.</p>
+                
+                <div class="guide-box" style="border-color: var(--danger);">
+                    <h4 style="color: var(--danger);">Aviso Importante</h4>
+                    <p>Ao confirmar a solicitação o seu acesso ao Painel Noskill e aos Módulos de Sensi será bloqueado de forma imediata e permanente em nosso banco de dados.</p>
+                    <p>Você perderá sua licença e será impedido de realizar novas compras no futuro utilizando seus dados atuais.</p>
+                </div>
+
+                <p style="text-align: center; margin-bottom: 2rem;">Se você não testou tempo suficiente ou precisa de ajuda técnica sugerimos buscar nosso suporte no WhatsApp antes de prosseguir.</p>
+
+                <button id="btn-confirm-refund" class="button danger-solid-button">CONFIRMAR SOLICITAÇÃO</button>
+            </div>
+        </section>
+
+        <section id="refund-analysis-page" class="hidden">
+            <header class="header">
+                <h1>Análise em Andamento</h1>
+            </header>
+            <div class="card">
+                <p style="text-align: center; color: var(--text-secondary); font-size: 1.1rem;">Sua solicitação de reembolso foi recebida e encaminhada para a nossa equipe financeira.</p>
+                
+                <div class="timer-display" id="countdown-timer">72:00:00</div>
+                <div class="timer-label">Tempo restante para conclusão</div>
+
+                <div class="guide-box">
+                    <h4>Próximos passos</h4>
+                    <ul>
+                        <li>Seu acesso ao produto foi revogado.</li>
+                        <li>A equipe financeira analisará os logs de acesso e o status da transação.</li>
+                        <li>O estorno será processado diretamente para o método de pagamento original.</li>
+                        <li>Você receberá um comprovante de cancelamento no email cadastrado na compra assim que o prazo for encerrado.</li>
+                    </ul>
+                </div>
             </div>
         </section>
     </div>
@@ -401,24 +551,82 @@
             const selectionPage = document.getElementById('selection-page');
             const androidPage = document.getElementById('android-page');
             const iosPage = document.getElementById('ios-page');
+            const refundPage = document.getElementById('refund-page');
+            const refundAnalysisPage = document.getElementById('refund-analysis-page');
+            
             const selectAndroid = document.getElementById('select-android');
             const selectIos = document.getElementById('select-ios');
+            const btnOpenRefund = document.getElementById('btn-open-refund');
+            const btnConfirmRefund = document.getElementById('btn-confirm-refund');
+            
             const backButtons = document.querySelectorAll('.back-button');
+
+            // Verifica se já existe um reembolso em andamento salvo no navegador
+            if (localStorage.getItem('noskill_refund_end_time')) {
+                showPage(refundAnalysisPage);
+                startTimer();
+            }
 
             function showPage(pageToShow) {
                 selectionPage.classList.add('hidden');
                 androidPage.classList.add('hidden');
                 iosPage.classList.add('hidden');
+                refundPage.classList.add('hidden');
+                refundAnalysisPage.classList.add('hidden');
+                
                 pageToShow.classList.remove('hidden');
                 window.scrollTo(0, 0);
             }
 
             selectAndroid.addEventListener('click', () => showPage(androidPage));
             selectIos.addEventListener('click', () => showPage(iosPage));
+            btnOpenRefund.addEventListener('click', () => showPage(refundPage));
+            
+            btnConfirmRefund.addEventListener('click', () => {
+                // Configura o timer de 72 horas (em milissegundos)
+                const endTime = Date.now() + (72 * 60 * 60 * 1000);
+                localStorage.setItem('noskill_refund_end_time', endTime);
+                showPage(refundAnalysisPage);
+                startTimer();
+            });
+
             backButtons.forEach(button => {
                 button.addEventListener('click', () => showPage(selectionPage));
             });
 
+            // Lógica do cronômetro
+            let timerInterval;
+            function startTimer() {
+                const timerElement = document.getElementById('countdown-timer');
+                let endTime = parseInt(localStorage.getItem('noskill_refund_end_time'), 10);
+
+                if (timerInterval) clearInterval(timerInterval);
+
+                function update() {
+                    const now = Date.now();
+                    const distance = endTime - now;
+
+                    if (distance <= 0) {
+                        timerElement.innerHTML = "ANÁLISE CONCLUÍDA";
+                        clearInterval(timerInterval);
+                        return;
+                    }
+
+                    const hours = Math.floor(distance / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    timerElement.innerHTML = 
+                        String(hours).padStart(2, '0') + "h " + 
+                        String(minutes).padStart(2, '0') + "m " + 
+                        String(seconds).padStart(2, '0') + "s";
+                }
+
+                update();
+                timerInterval = setInterval(update, 1000);
+            }
+
+            // Lógica de copiar texto
             const copyButtons = document.querySelectorAll('.copy-btn');
             copyButtons.forEach(button => {
                 button.addEventListener('click', () => {
